@@ -272,8 +272,8 @@ body {
     padding: 4rem 0;
 }
 
-/* Toast 로고 스타일 */
-.feature-card img[alt="Toast Logo"] {
+/* 제품 로고 스타일 */
+.feature-card .product-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
