@@ -1,26 +1,41 @@
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    updateThemeIcon(theme);
-}
+/* Theme toggle. The page follows the system preference until someone picks a
+   side; that choice is then remembered. The blocking snippet in <head> applies
+   the stored choice before first paint, so there is no flash. */
+(function () {
+    var root = document.documentElement;
+    var KEY = 'opspresso-theme';
 
-function toggleTheme() {
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-}
-
-function updateThemeIcon(theme) {
-    const themeToggle = document.querySelector('.theme-toggle i');
-    if (theme === 'dark') {
-        themeToggle.className = 'fas fa-moon';
-    } else {
-        themeToggle.className = 'fas fa-sun';
+    function current() {
+        return root.getAttribute('data-theme')
+            || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     }
-}
 
-// 초기 테마 설정
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-});
+    function sync(theme) {
+        var buttons = document.querySelectorAll('.theme-toggle');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].setAttribute('aria-pressed', String(theme === 'dark'));
+            buttons[i].setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        }
+    }
+
+    function apply(theme) {
+        root.setAttribute('data-theme', theme);
+        try {
+            localStorage.setItem(KEY, theme);
+        } catch (e) {
+            /* private mode: the choice just does not persist */
+        }
+        sync(theme);
+    }
+
+    document.addEventListener('click', function (event) {
+        var button = event.target.closest('.theme-toggle');
+        if (button) {
+            apply(current() === 'dark' ? 'light' : 'dark');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        sync(current());
+    });
+})();
