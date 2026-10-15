@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpsPresso — Developer tools, pulled to order</title>
-    <meta name="description" content="OpsPresso is a small group of infrastructure and AI engineers. We build Toast, VibeMon, Agent Studio, and romty — and we use all of them every day.">
+    <title>OpsPresso — Platforms and tools for AI agents</title>
+    <meta name="description" content="Build and operate AI agents with Studio, Memory, Librio, and Forge. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
 
     <link rel="canonical" href="https://opspresso.com/">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -16,10 +16,13 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opspresso.com/">
-    <meta property="og:title" content="OpsPresso — Developer tools, pulled to order">
-    <meta property="og:description" content="A small group of infrastructure and AI engineers. We build Toast, VibeMon, Agent Studio, and romty.">
+    <meta property="og:title" content="OpsPresso — Platforms and tools for AI agents">
+    <meta property="og:description" content="Build and operate AI agents with Studio, Memory, Librio, and Forge. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
     <meta property="og:image" content="https://opspresso.com/images/opspresso.png">
     <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="OpsPresso — Platforms and tools for AI agents">
+    <meta name="twitter:description" content="Build and operate AI agents with Studio, Memory, Librio, and Forge. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta name="twitter:image" content="https://opspresso.com/images/opspresso.png">
 
     <script>
         try {
@@ -35,15 +38,16 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#tools">Skip to the tools</a>
+    <a class="skip-link" href="#platform">Skip to the platform</a>
 
     <header class="nav">
         <div class="shell nav-inner">
             <a class="brand" href="./">
                 <img src="images/opspresso.png" alt="" width="30" height="30">OpsPresso
             </a>
-            <a class="nav-link nav-link-tools" href="#tools">Tools</a>
-            <a class="nav-link" href="https://github.com/opspresso" target="_blank" rel="noopener">GitHub</a>
+            <a class="nav-link nav-link-section" href="#platform">Platform</a>
+            <a class="nav-link nav-link-section" href="#tools">Tools</a>
+            <a class="nav-link nav-link-github" href="https://github.com/opspresso" target="_blank" rel="noopener">GitHub</a>
             <a class="nav-link" href="policy.html">Policy</a>
             <button class="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="false">
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -81,16 +85,17 @@
             </svg>
 
             <div class="shell hero-inner">
-                <p class="mono eyebrow">IaC · GitOps · DevOps · SRE · AI</p>
-                <h1 class="display">Developer tools,<br><span class="pulled">pulled to order.</span></h1>
-                <p class="lead">We're a small group of infrastructure and AI engineers. We build four tools, and we use all of them every day.</p>
+                <p class="mono eyebrow">Agent platforms · Developer tools · Reliable operations</p>
+                <h1 class="display">Platforms &amp; tools<br><span class="hero-emphasis">for AI agents.</span></h1>
+                <p class="lead">Build and operate AI agents with memory, knowledge, and isolated workspaces. Keep everyday work moving with monitoring, terminal, and launcher tools.</p>
                 <div class="hero-actions">
-                    <a class="btn btn-hot" href="#tools">
-                        See the tools
+                    <a class="btn btn-hot" href="#platform">
+                        Explore the platform
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 5v14M19 12l-7 7-7-7"/>
                         </svg>
                     </a>
+                    <a class="btn btn-quiet" href="#tools">Developer tools</a>
                     <a class="btn btn-quiet" href="https://github.com/opspresso" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M12 .5C5.73.5.9 5.33.9 11.6c0 4.9 3.17 9.06 7.57 10.53.55.1.75-.24.75-.53v-2.05c-3.08.67-3.73-1.32-3.73-1.32-.5-1.29-1.23-1.63-1.23-1.63-1-.69.08-.67.08-.67 1.11.08 1.7 1.14 1.7 1.14.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.46-.28-5.05-1.23-5.05-5.48 0-1.21.43-2.2 1.14-2.98-.11-.28-.49-1.41.11-2.94 0 0 .93-.3 3.05 1.14a10.5 10.5 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.6 1.53.22 2.66.11 2.94.71.78 1.14 1.77 1.14 2.98 0 4.26-2.6 5.2-5.07 5.47.4.35.76 1.03.76 2.08v3.08c0 .3.2.64.76.53a11.11 11.11 0 0 0 7.56-10.53C23.1 5.33 18.27.5 12 .5z"/>
@@ -101,12 +106,165 @@
             </div>
         </section>
 
+        <section class="section" id="platform">
+            <div class="shell">
+                <div class="section-head">
+                    <h2 class="display">Agent Platform</h2>
+                    <p class="lead">Dedicated services for agent orchestration, durable context, grounded knowledge, and isolated execution. Deploy them in your own environment and connect the services you need.</p>
+                </div>
+
+                <article class="product p-studio">
+                    <img class="product-mark" src="images/agent-studio.png" alt="Agent Studio" width="72" height="72" loading="lazy">
+                    <div>
+                        <h3 class="display product-name">Agent Studio</h3>
+                        <a class="product-url" href="https://studio.agrt.dev" target="_blank" rel="noopener">
+                            studio.agrt.dev
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8"/>
+                            </svg>
+                        </a>
+                        <p class="mono product-platform">Console · APIs · Messaging</p>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-pitch">Configure agents. Run and inspect their work.</p>
+                        <p class="product-detail">Connect models, tools, and skills, then run agents through chat, APIs, messaging, or automation. Manage access, tool approvals, traces, and daily or monthly spending limits.</p>
+                        <ul class="tags">
+                            <li>MCP tools</li>
+                            <li>Tool approvals</li>
+                            <li>Live traces</li>
+                            <li>Daily &amp; monthly budgets</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="product p-memory">
+                    <img class="product-mark" src="images/agent-memory.png" alt="Agent Memory" width="72" height="72" loading="lazy">
+                    <div>
+                        <h3 class="display product-name">Agent Memory</h3>
+                        <a class="product-url" href="https://memory.agrt.dev" target="_blank" rel="noopener">
+                            memory.agrt.dev
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8"/>
+                            </svg>
+                        </a>
+                        <p class="mono product-platform">Console · HTTP · MCP</p>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-pitch">Carry useful context across agents and sessions.</p>
+                        <p class="product-detail">Store rules, preferences, decisions, facts, and lessons with their sources. Recall them across coding clients, control who can access them, and hand work from one session to another.</p>
+                        <ul class="tags">
+                            <li>Durable context</li>
+                            <li>Scoped sharing</li>
+                            <li>Version history</li>
+                            <li>Client handoffs</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="product p-librio">
+                    <img class="product-mark" src="images/agent-librio.png" alt="Agent Librio" width="72" height="72" loading="lazy">
+                    <div>
+                        <h3 class="display product-name">Agent Librio</h3>
+                        <a class="product-url" href="https://librio.agrt.dev" target="_blank" rel="noopener">
+                            librio.agrt.dev
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8"/>
+                            </svg>
+                        </a>
+                        <p class="mono product-platform">Documents · Audio · Search</p>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-pitch">Give agents knowledge they can trace to a source.</p>
+                        <p class="product-detail">Collect documents and recordings, produce transcripts and meeting notes, and retrieve evidence from accessible source material. Keep knowledge graphs connected to the documents behind them.</p>
+                        <ul class="tags">
+                            <li>Document search</li>
+                            <li>Transcription</li>
+                            <li>Meeting notes</li>
+                            <li>Knowledge graphs</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="product p-forge">
+                    <img class="product-mark" src="images/agent-forge.png" alt="Agent Forge" width="72" height="72" loading="lazy">
+                    <div>
+                        <h3 class="display product-name">Agent Forge</h3>
+                        <a class="product-url" href="https://forge.agrt.dev" target="_blank" rel="noopener">
+                            forge.agrt.dev
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8"/>
+                            </svg>
+                        </a>
+                        <p class="mono product-platform">Workspaces · Docker · Kubernetes</p>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-pitch">Give agent work a place to run.</p>
+                        <p class="product-detail">Run commands and coding agents in isolated sandboxes while retaining their workspaces and sessions. Inspect logs, pause and resume work, and manage Git changes through the console or API.</p>
+                        <ul class="tags">
+                            <li>Persistent workspaces</li>
+                            <li>Isolated execution</li>
+                            <li>Coding CLI sessions</li>
+                            <li>Git workflows</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section class="section" id="tools">
             <div class="shell">
                 <div class="section-head">
-                    <h2 class="display">Four tools</h2>
-                    <p class="lead">Each one started as something we needed ourselves.</p>
+                    <h2 class="display">Developer Tools</h2>
+                    <p class="lead">Monitor your systems, keep coding sessions running, and make everyday actions easier.</p>
                 </div>
+
+                <article class="product p-vibemon">
+                    <img class="product-mark" src="images/vibemon.png" alt="VibeMon" width="72" height="72" loading="lazy">
+                    <div>
+                        <h3 class="display product-name">VibeMon</h3>
+                        <a class="product-url" href="https://vibemon.io" target="_blank" rel="noopener">
+                            vibemon.io
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8"/>
+                            </svg>
+                        </a>
+                        <p class="mono product-platform">Desktop · Web · ESP32</p>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-pitch">Monitor your agents, accounts, and infrastructure.</p>
+                        <p class="product-detail">Follow coding-agent activity alongside usage from multiple accounts and metrics from servers, Kubernetes clusters, DGX Spark hosts, and custom resources. View recent trends on desktop or web, with a character companion and an optional ESP32 display.</p>
+                        <ul class="tags">
+                            <li>Local agent activity</li>
+                            <li>Multiple accounts</li>
+                            <li>Resource metrics</li>
+                            <li>Recent trends</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="product p-romty">
+                    <img class="product-mark" src="images/romty.png" alt="romty" width="72" height="72" loading="lazy">
+                    <div>
+                        <h3 class="display product-name">romty</h3>
+                        <a class="product-url" href="https://romty.dev" target="_blank" rel="noopener">
+                            romty.dev
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17 17 7M9 7h8v8"/>
+                            </svg>
+                        </a>
+                        <p class="mono product-platform">macOS · Linux</p>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-pitch">Close the terminal. The shells keep running.</p>
+                        <p class="product-detail">Keep coding agents running on an always-on machine after you close the terminal or disconnect SSH. Reconnect to the same workspace, review retained output, and see which agents are working or waiting for input.</p>
+                        <ul class="tags">
+                            <li>Persistent shell sessions</li>
+                            <li>Project tabs</li>
+                            <li>10,000-line scrollback</li>
+                            <li>Agent activity status</li>
+                        </ul>
+                    </div>
+                </article>
 
                 <article class="product p-toast">
                     <img class="product-mark" src="images/toast.png" alt="Toast" width="72" height="72" loading="lazy">
@@ -131,89 +289,21 @@
                         </ul>
                     </div>
                 </article>
-
-                <article class="product p-vibemon">
-                    <img class="product-mark" src="images/vibemon.png" alt="VibeMon" width="72" height="72" loading="lazy">
-                    <div>
-                        <h3 class="display product-name">VibeMon</h3>
-                        <a class="product-url" href="https://vibemon.io" target="_blank" rel="noopener">
-                            vibemon.io
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M7 17 17 7M9 7h8v8"/>
-                            </svg>
-                        </a>
-                        <p class="mono product-platform">Claude Code · Codex · Kiro · OpenClaw</p>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-pitch">See what your coding agent is doing without asking it.</p>
-                        <p class="product-detail">A pixel art character in the system tray shows at a glance whether the agent is thinking, working, or waiting for you — along with the active project, tool, model, and context usage.</p>
-                        <ul class="tags">
-                            <li>System tray status</li>
-                            <li>Context usage</li>
-                            <li>Hook-based, no wrapper</li>
-                            <li>ESP32 display</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="product p-studio">
-                    <img class="product-mark" src="images/agent-studio.png" alt="Agent Studio" width="72" height="72" loading="lazy">
-                    <div>
-                        <h3 class="display product-name">Agent Studio</h3>
-                        <a class="product-url" href="https://studio.agrt.dev" target="_blank" rel="noopener">
-                            studio.agrt.dev
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M7 17 17 7M9 7h8v8"/>
-                            </svg>
-                        </a>
-                        <p class="mono product-platform">Console · OpenAI-compatible API · Slack</p>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-pitch">Build production AI agents, then actually run them.</p>
-                        <p class="product-detail">Author prompts and agents as versioned projects, then serve them through the console, an API, Slack, or webhooks. The agent loop handles multi-turn tool use with turn budgets, on-demand skills, and subagent transfers.</p>
-                        <ul class="tags">
-                            <li>MCP tools</li>
-                            <li>Live traces</li>
-                            <li>Evaluation</li>
-                            <li>Per-call cost limits</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="product p-romty">
-                    <img class="product-mark" src="images/romty.png" alt="romty" width="72" height="72" loading="lazy">
-                    <div>
-                        <h3 class="display product-name">romty</h3>
-                        <a class="product-url" href="https://romty.dev" target="_blank" rel="noopener">
-                            romty.dev
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M7 17 17 7M9 7h8v8"/>
-                            </svg>
-                        </a>
-                        <p class="mono product-platform">macOS · Linux</p>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-pitch">Close the terminal. The shells keep running.</p>
-                        <p class="product-detail">A detached daemon owns the shell PTYs, so closing the window leaves every process alive. Reopen it and romty reattaches and replays what you missed, with your projects and their tabs where you left them.</p>
-                        <ul class="tags">
-                            <li>Detached sessions</li>
-                            <li>Project tabs</li>
-                            <li>10,000-line scrollback</li>
-                            <li>IME-independent keys</li>
-                        </ul>
-                    </div>
-                </article>
             </div>
         </section>
 
         <section class="section" id="work">
             <div class="shell">
                 <div class="section-head">
-                    <h2 class="display">What we work in</h2>
-                    <p class="lead">Combining the precision of operations with the refreshing simplicity of espresso.</p>
+                    <h2 class="display">Built on operational experience</h2>
+                    <p class="lead">Backend development and SRE experience guide how we build, ship, and operate agent systems.</p>
                 </div>
 
                 <dl class="disciplines">
+                    <div class="discipline">
+                        <dt>Agent platforms</dt>
+                        <dd>Models, tools, memory, knowledge, and workspaces with clear responsibilities.</dd>
+                    </div>
                     <div class="discipline">
                         <dt>IaC</dt>
                         <dd>Infrastructure defined in code, reviewed like code.</dd>
@@ -230,10 +320,6 @@
                         <dt>SRE</dt>
                         <dd>Reliability that is measured, not assumed.</dd>
                     </div>
-                    <div class="discipline">
-                        <dt>AI</dt>
-                        <dd>Agents that do real work inside the loop.</dd>
-                    </div>
                 </dl>
             </div>
         </section>
@@ -246,19 +332,27 @@
                     <p class="footer-brand">
                         <img src="images/opspresso.png" alt="" width="26" height="26">OpsPresso
                     </p>
-                    <p class="footer-tagline">A small group of infrastructure and AI engineers, building the tools we wanted to use.</p>
+                    <p class="footer-tagline">Platforms for AI agents. Tools for the people building them.</p>
                 </div>
-                <nav class="footer-col">
-                    <h2>Tools</h2>
+                <nav class="footer-col" aria-label="Agent Platform">
+                    <h2>Agent Platform</h2>
                     <ul class="footer-links">
-                        <li><a href="https://toastapp.dev" target="_blank" rel="noopener">Toast</a></li>
-                        <li><a href="https://vibemon.io" target="_blank" rel="noopener">VibeMon</a></li>
                         <li><a href="https://studio.agrt.dev" target="_blank" rel="noopener">Agent Studio</a></li>
+                        <li><a href="https://memory.agrt.dev" target="_blank" rel="noopener">Agent Memory</a></li>
+                        <li><a href="https://librio.agrt.dev" target="_blank" rel="noopener">Agent Librio</a></li>
+                        <li><a href="https://forge.agrt.dev" target="_blank" rel="noopener">Agent Forge</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Developer Tools">
+                    <h2>Developer Tools</h2>
+                    <ul class="footer-links">
+                        <li><a href="https://vibemon.io" target="_blank" rel="noopener">VibeMon</a></li>
                         <li><a href="https://romty.dev" target="_blank" rel="noopener">romty</a></li>
+                        <li><a href="https://toastapp.dev" target="_blank" rel="noopener">Toast</a></li>
                     </ul>
                 </nav>
                 <nav class="footer-col">
-                    <h2>Company</h2>
+                    <h2>OpsPresso</h2>
                     <ul class="footer-links">
                         <li><a href="https://github.com/opspresso" target="_blank" rel="noopener">GitHub</a></li>
                         <li><a href="policy.html">Privacy policy</a></li>
@@ -266,7 +360,7 @@
                 </nav>
             </div>
             <div class="footer-bottom">
-                <p class="mono">&copy; 2025 OpsPresso</p>
+                <p class="mono">&copy; 2025–2026 OpsPresso</p>
                 <p class="mono">Made with too much coffee</p>
             </div>
         </div>
