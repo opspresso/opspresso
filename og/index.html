@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- Source of docs/images/og.png (1200x630). Render it as described in README.md. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=block">
+<style>
+    html, body { margin: 0; }
+    body {
+        width: 1200px; height: 630px; overflow: hidden; position: relative;
+        background:
+            radial-gradient(900px 520px at 100% 0%, rgba(42, 174, 159, 0.22), transparent 60%),
+            radial-gradient(700px 420px at 0% 100%, rgba(224, 124, 0, 0.14), transparent 60%),
+            #0a1619;
+        color: #e6efed;
+        font-family: "Instrument Sans", sans-serif;
+    }
+    .frame { position: absolute; inset: 64px 72px; display: flex; flex-direction: column; }
+    .brand { display: flex; align-items: center; gap: 16px; font: 700 34px/1 "Archivo", sans-serif; font-stretch: 108%; letter-spacing: -0.015em; }
+    .brand img { width: 56px; height: 56px; }
+    h1 { margin: 56px 0 0; font: 700 84px/0.98 "Archivo", sans-serif; font-stretch: 116%; letter-spacing: -0.03em; }
+    h1 span { color: #f2a93b; }
+    .marks { margin-top: auto; display: flex; align-items: center; gap: 14px; }
+    .marks img { width: 60px; height: 60px; border-radius: 16px; background: #0f2429; border: 1px solid rgba(154, 200, 202, 0.16); padding: 6px; box-sizing: border-box; }
+    .sep { width: 1px; height: 40px; background: rgba(154, 200, 202, 0.25); margin: 0 10px; }
+    .url { margin-left: auto; font: 500 22px "JetBrains Mono", monospace; letter-spacing: 0.04em; color: #45d6c4; }
+    .steam { position: absolute; right: 60px; top: 30px; height: 400px; color: #2aae9f; opacity: 0.4; -webkit-mask-image: linear-gradient(to top, transparent, #000 25%, #000 65%, transparent); mask-image: linear-gradient(to top, transparent, #000 25%, #000 65%, transparent); }
+    .sub { margin: 28px 0 0; font: 500 22px/1.4 "JetBrains Mono", monospace; letter-spacing: 0.03em; color: #9db4b8; }
+    .steam path { fill: none; stroke: currentColor; stroke-width: 6; stroke-linecap: round; }
+</style>
+</head>
+<body>
+    <svg class="steam" viewBox="0 0 320 520" aria-hidden="true">
+        <path d="M160 520 Q136 500 160 480 T160 440 T160 400 T160 360 T160 320 T160 280 T160 240 T160 200 T160 160 T160 120 T160 80"/>
+        <path d="M128 470 Q112 450 128 430 T128 390 T128 350 T128 310 T128 270 T128 230 T128 190" transform="rotate(-6 160 520)"/>
+        <path d="M192 500 Q172 480 192 460 T192 420 T192 380 T192 340 T192 300 T192 260 T192 220 T192 180 T192 140" transform="rotate(5 160 520)"/>
+    </svg>
+    <div class="frame">
+        <div class="brand"><img src="../docs/images/opspresso.png" alt="">OpsPresso</div>
+        <h1>Platforms &amp; tools<br><span>for AI agents.</span></h1>
+        <p class="sub">Studio · Models · Memory · Librio · Forge · Broker</p>
+        <div class="marks">
+            <img src="../docs/images/agent-studio.png" alt="">
+            <img src="../docs/images/agent-models.png" alt="">
+            <img src="../docs/images/agent-memory.png" alt="">
+            <img src="../docs/images/agent-librio.png" alt="">
+            <img src="../docs/images/agent-forge.png" alt="">
+            <img src="../docs/images/agent-broker.png" alt="">
+            <span class="sep"></span>
+            <img src="../docs/images/vibemon.png" alt="">
+            <img src="../docs/images/romty.png" alt="">
+            <img src="../docs/images/toast.png" alt="">
+            <span class="url">opspresso.com</span>
+        </div>
+    </div>
+</body>
+</html>
