@@ -11,19 +11,19 @@
         {
             id: 'channels', title: 'Entry points', outside: true,
             sub: ['Console · API · Slack', 'Teams · Telegram · Automation'], short: 'Entry points',
-            box: { wide: [16, 232, 184, 64], narrow: [126, 16, 108, 56] },
+            box: { wide: [16, 230, 184, 64], narrow: [126, 16, 108, 56] },
             detail: 'The console, Agent API, Slack, Teams, Telegram, webhooks, and schedules start agent runs in Studio.'
         },
         {
             id: 'coding', title: 'Coding clients', outside: true,
             sub: ['Claude Code · Codex'], short: 'Coding clients',
-            box: { wide: [16, 52, 184, 64], narrow: [8, 16, 108, 56] },
+            box: { wide: [16, 46, 184, 64], narrow: [8, 16, 108, 56] },
             detail: 'Claude Code and Codex connect to Memory directly with a personal client credential and the owner’s current permissions.'
         },
         {
             id: 'plugins', title: 'agent-plugins', outside: true,
             sub: ['Skills · MCP declarations'], short: 'agent-plugins',
-            box: { wide: [256, 404, 208, 64], narrow: [244, 16, 108, 56] },
+            box: { wide: [16, 414, 184, 64], narrow: [244, 16, 108, 56] },
             href: 'https://github.com/opspresso/agent-plugins', linkText: 'Open on GitHub',
             detail: 'A public repository of task-focused plugins, Agent Skills, and MCP declarations. Studio syncs it. It runs no service of its own.'
         },
@@ -32,48 +32,67 @@
             sub: ['Identity · agents', 'approvals · budgets'], short: 'Agent Studio',
             box: { wide: [256, 200, 208, 124], narrow: [84, 124, 232, 84] },
             href: '#agent-studio',
-            detail: 'Owns users, permissions, and agents. It is the OIDC provider for every service, enforces tool approvals and spending limits, and orchestrates work across Memory, Librio, and Forge.'
+            detail: 'Owns users, permissions, and agents. It is the OIDC provider for every service, enforces tool approvals and spending limits, and orchestrates work across Memory, Librio, Forge, and Broker.'
         },
         {
             id: 'memory', title: 'Agent Memory', product: true,
             sub: ['Durable context', 'and handoffs'], short: 'Memory',
-            box: { wide: [552, 36, 208, 84], narrow: [8, 268, 108, 76] },
+            box: { wide: [552, 36, 208, 84], narrow: [8, 268, 78, 76] },
             href: '#agent-memory',
             detail: 'Stores rules, preferences, decisions, facts, and lessons with their sources and versions. Studio agents and coding clients recall them and hand work between sessions.'
         },
         {
             id: 'librio', title: 'Agent Librio', product: true,
             sub: ['Documents, audio,', 'and knowledge'], short: 'Librio',
-            box: { wide: [552, 220, 208, 84], narrow: [126, 268, 108, 76] },
+            box: { wide: [552, 196, 208, 84], narrow: [100, 268, 78, 76] },
             href: '#agent-librio',
             detail: 'Holds documents, recordings, transcripts, meeting notes, and the knowledge graph. Before it spends on models, it asks Studio to authorize, reserve, and settle the cost.'
         },
         {
             id: 'forge', title: 'Agent Forge', product: true,
             sub: ['Workspaces', 'and sandboxes'], short: 'Forge',
-            box: { wide: [552, 376, 208, 84], narrow: [244, 268, 108, 76] },
+            box: { wide: [552, 372, 208, 84], narrow: [186, 268, 78, 76] },
             href: '#agent-forge',
-            detail: 'Keeps persistent workspaces and runs commands and coding CLIs in isolated sandboxes. It asks Studio to authorize model spend and sends sandbox model calls through Models.'
+            detail: 'Keeps persistent workspaces and runs commands and coding CLIs in isolated sandboxes. It asks Studio to authorize model spend, sends sandbox model calls through Models, and injects Broker’s dev values into each run.'
+        },
+        {
+            id: 'broker', title: 'Agent Broker', product: true,
+            sub: ['App resources', 'and secrets'], short: 'Broker',
+            box: { wide: [552, 532, 208, 84], narrow: [274, 268, 78, 76] },
+            href: '#agent-broker',
+            detail: 'Creates PostgreSQL databases, storage prefixes, and secrets for each repository’s dev and prod environments. Values stay in the secret store. Its MCP tools never return them.'
         },
         {
             id: 'sandbox', title: 'Sandboxes', outside: true,
             sub: ['Docker · Kubernetes'], short: 'Sandboxes',
-            box: { wide: [552, 480, 208, 48], narrow: [244, 404, 108, 52] },
-            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly.'
+            box: { wide: [840, 388, 184, 52], narrow: [186, 400, 78, 56] },
+            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly. Dev values from Broker are masked in run output.'
         },
         {
             id: 'models', title: 'Agent Models', product: true,
             sub: ['Approve · route', 'record usage'], short: 'Agent Models',
-            box: { wide: [840, 200, 184, 110], narrow: [8, 404, 226, 80] },
+            box: { wide: [840, 184, 184, 110], narrow: [8, 400, 170, 80] },
             href: '#agent-models',
             detail: 'Holds provider connections and keys. Only models an operator approves can be called. Each request’s usage and cost is recorded once, without storing generated content.'
         },
         {
             id: 'providers', title: 'Model providers', outside: true,
             sub: ['OpenAI · Anthropic', 'Google · xAI · Bedrock', 'OpenRouter · Self-hosted'],
-            subNarrow: ['OpenAI · Anthropic · Google · xAI', 'Bedrock · OpenRouter · Self-hosted'],
-            box: { wide: [840, 404, 184, 112], narrow: [8, 532, 344, 72] },
+            subNarrow: ['OpenAI · Anthropic', 'Google · xAI · Bedrock', 'OpenRouter · Self-hosted'],
+            box: { wide: [840, 24, 184, 112], narrow: [8, 528, 170, 84] },
             detail: 'OpenAI, Anthropic, Google, xAI, Amazon Bedrock, OpenRouter, and self-hosted endpoints, connected once in Models.'
+        },
+        {
+            id: 'resources', title: 'App resources', outside: true,
+            sub: ['PostgreSQL pool · S3 prefix', 'SSM Parameter Store'], short: 'Resources',
+            box: { wide: [840, 526, 184, 96], narrow: [274, 400, 78, 56] },
+            detail: 'A database and login role on the shared PostgreSQL pool, a private prefix in a shared S3 bucket, and secret values in SSM Parameter Store. Each belongs to one project environment.'
+        },
+        {
+            id: 'apps', title: 'Deployed apps', outside: true,
+            sub: ['GitOps · External Secrets'], short: 'Deployed apps',
+            box: { wide: [840, 666, 184, 64], narrow: [186, 528, 166, 84] },
+            detail: 'Each project environment runs in its own namespace that GitOps declares. External Secrets reads only that environment’s values. A restart applies changed values.'
         }
     ];
 
@@ -82,24 +101,40 @@
         { from: 'channels', to: 'studio', label: 'Requests from people signed in through Studio' },
         { from: 'coding', to: 'memory', label: 'Personal client credential to recall, remember, and hand off' },
         { from: 'plugins', to: 'studio', label: 'Studio syncs skills and MCP declarations' },
-        { from: 'studio', to: 'memory', label: 'User grant over MCP for memories and handoffs' },
+        {
+            from: 'studio', to: 'memory', label: 'User grant over MCP for memories and handoffs',
+            path: { narrow: 'M100 208 C100 240 47 236 47 268' }
+        },
         { from: 'studio', to: 'librio', label: 'User grant over HTTP and MCP for documents, graph, and audio' },
         { from: 'studio', to: 'forge', label: 'User grant for workspaces, runs, and Git' },
         {
+            from: 'studio', to: 'broker', label: 'User grant over MCP for projects and resources, without values or deletes',
+            path: {
+                wide: 'M400 324 V564 Q400 574 410 574 H552',
+                narrow: 'M300 208 C300 240 313 236 313 268'
+            }
+        },
+        {
             from: 'studio', to: 'models', label: 'Per-call grant bound to one request and one approved model',
             path: {
-                wide: 'M430 324 V332 Q430 342 440 342 H870 Q880 342 880 332 V310',
-                narrow: 'M121 208 V404'
+                wide: 'M430 324 V332 Q430 342 440 342 H870 Q880 342 880 332 V294',
+                narrow: 'M93 208 V400'
             }
         },
         { from: 'memory', to: 'models', label: 'Per-call grant or service credential' },
         { from: 'librio', to: 'models', label: 'Per-call grant or service credential' },
         { from: 'forge', to: 'models', label: 'Per-call grant or service credential, including sandbox calls' },
         { from: 'forge', to: 'sandbox', label: 'Runs commands and coding CLIs with a run-scoped token' },
+        {
+            from: 'forge', to: 'broker', label: 'Short-lived token exchange, then dev values for one run',
+            path: { narrow: 'M244 344 C244 372 300 372 300 344' }
+        },
+        { from: 'broker', to: 'resources', label: 'Creates databases and prefixes, and stores values in SSM' },
+        { from: 'resources', to: 'apps', label: 'External Secrets delivers prod values; Pod Identity limits the prefix' },
         { from: 'models', to: 'providers', label: 'Only Models holds provider keys' }
     ];
 
-    var VIEW = { wide: [1040, 540], narrow: [360, 616] };
+    var VIEW = { wide: [1040, 746], narrow: [360, 624] };
 
     var byId = {};
     NODES.forEach(function (node) { byId[node.id] = node; });
@@ -165,7 +200,7 @@
 
         var edgeLayer = el('g', { 'class': 'arch-edges', 'aria-hidden': 'true' }, svg);
         EDGES.forEach(function (edge) {
-            var d = edge.path ? edge.path[layout] : edgePath(byId[edge.from].box[layout], byId[edge.to].box[layout]);
+            var d = edge.path && edge.path[layout] ? edge.path[layout] : edgePath(byId[edge.from].box[layout], byId[edge.to].box[layout]);
             edge.el = el('path', { d: d, 'class': 'arch-edge', 'marker-end': 'url(#arch-arrow)' }, edgeLayer);
         });
 

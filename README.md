@@ -22,6 +22,7 @@ OpsPresso builds services for operating AI agents and tools for the people build
 | [Agent Memory](https://memory.agrt.dev) | Store durable context, recall it in Studio and coding clients, share it by scope, and hand off work between sessions. |
 | [Agent Librio](https://librio.agrt.dev) | Collect documents and audio; provide transcription, meeting notes, source-linked search, knowledge graphs, and ontology objects. |
 | [Agent Forge](https://forge.agrt.dev) | Run coding agents and commands in isolated sandboxes with persistent workspaces, Git workflows, and approved releases. |
+| [Agent Broker](https://broker.agrt.dev) | Create PostgreSQL databases, storage prefixes, and secrets for agent-built apps; deliver dev values to Forge runs and prod values through External Secrets. |
 
 ### Developer Tools
 
@@ -43,17 +44,20 @@ Open <http://127.0.0.1:8000/>. Stop the server with `Ctrl+C`.
 
 ## Content and deployment
 
-- `docs/index.html`: Homepage, product sections, and social preview metadata.
+- `docs/index.html`: Homepage, product sections, the request-to-app workflow, and social preview metadata.
 - `docs/policy.html`: Privacy policy, with the same navigation and product links.
 - `docs/css/style.css`: Shared layout, product accents, responsive styles, and themes.
 - `docs/js/theme.js`: Theme selection and persistence.
 - `docs/js/platform-map.js`: Interactive Agent Platform map. Its `NODES` and `EDGES` lists hold each box, link, and explanation. Update them when a service, entry point, or service-to-service call changes.
 - `docs/images/`: Product marks. Use the corresponding service's `public/icon-192.png` when updating an Agent product mark.
+- `docs/images/og.png`: Social preview card (1200×630) for both pages. Its source is `og/index.html`, which is not published.
+  To update it, serve the repository root (`python3 -m http.server 8000 --bind 127.0.0.1`), open
+  <http://127.0.0.1:8000/og/> in a browser at a 1200×630 viewport after the fonts load, and save a screenshot as `docs/images/og.png`.
 - `docs/CNAME`: Custom domain for GitHub Pages.
 
 GitHub Pages publishes the `docs/` directory from `main`. A merged change is complete when the Pages workflow succeeds and the updated site is visible at the public domain.
 
-When changing a product, check its current documentation and update the homepage, both page footers, and this list together. Keep descriptions about user-visible capabilities and their limits. Do not add analytics scripts without a verified source and a matching privacy disclosure.
+When changing a product, check its current documentation and update the homepage, the platform map, the workflow, the social card, both page footers, and this list together. Keep descriptions about user-visible capabilities and their limits. Do not add analytics scripts without a verified source and a matching privacy disclosure.
 
 ## Validation
 
