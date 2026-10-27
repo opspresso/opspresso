@@ -47,6 +47,7 @@ Open <http://127.0.0.1:8000/>. Stop the server with `Ctrl+C`.
 - `docs/policy.html`: Privacy policy, with the same navigation and product links.
 - `docs/css/style.css`: Shared layout, product accents, responsive styles, and themes.
 - `docs/js/theme.js`: Theme selection and persistence.
+- `docs/js/platform-map.js`: Interactive Agent Platform map. Its `NODES` and `EDGES` lists hold each box, link, and explanation. Update them when a service, entry point, or service-to-service call changes.
 - `docs/images/`: Product marks. Use the corresponding service's `public/icon-192.png` when updating an Agent product mark.
 - `docs/CNAME`: Custom domain for GitHub Pages.
 
@@ -58,7 +59,7 @@ When changing a product, check its current documentation and update the homepage
 
 This repository has no configured lint, type-check, or automated test suite. Before merging:
 
-- Run `git diff --check` and, when Node.js is available, `node --check docs/js/theme.js`.
+- Run `git diff --check` and, when Node.js is available, `node --check docs/js/theme.js` and `node --check docs/js/platform-map.js`.
 - Check local assets, internal anchors, and product destinations.
 - Preview both pages on desktop and narrow mobile screens, including light and dark themes.
 - Verify the published pages and assets after deployment.

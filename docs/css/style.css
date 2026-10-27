@@ -473,6 +473,226 @@ a:hover {
     margin: 0.9rem 0 0;
 }
 
+/* --- Platform map --------------------------------------------------------- */
+
+.arch {
+    margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+}
+
+.arch-head h3 {
+    margin: 0;
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-stretch: 108%;
+}
+
+.arch-head p {
+    margin: 0.4rem 0 0;
+    max-width: 62ch;
+    color: var(--text-muted);
+}
+
+/* The map needs JavaScript; without it the caption and product rows remain. */
+.arch-map,
+.arch-panel,
+.arch-legend {
+    display: none;
+}
+
+.arch.is-ready .arch-map,
+.arch.is-ready .arch-panel {
+    display: block;
+}
+
+.arch.is-ready .arch-legend {
+    display: flex;
+}
+
+.arch-map {
+    margin-top: clamp(1rem, 3vw, 1.75rem);
+}
+
+@media (max-width: 640px) {
+    .arch {
+        padding: 1rem;
+    }
+}
+
+.arch-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.arch-edge {
+    fill: none;
+    stroke: var(--text-faint);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.55;
+    transition: opacity var(--speed) ease, stroke var(--speed) ease;
+}
+
+path.arch-arrow { fill: var(--text-faint); }
+path.arch-arrow-on { fill: var(--hot-text); }
+
+.arch-svg.has-focus .arch-edge { opacity: 0.16; }
+
+.arch-svg .arch-edge.is-on {
+    stroke: var(--hot-text);
+    stroke-width: 2;
+    stroke-dasharray: 6 6;
+    opacity: 1;
+    animation: arch-flow 900ms linear infinite;
+}
+
+@keyframes arch-flow {
+    to { stroke-dashoffset: -12; }
+}
+
+.arch-box {
+    --accent: var(--text-faint);
+    cursor: pointer;
+    outline: none;
+    transition: opacity var(--speed) ease;
+}
+
+.arch-box rect {
+    fill: var(--surface);
+    stroke: color-mix(in srgb, var(--accent) 55%, var(--line));
+    stroke-width: 1.5;
+    transition: stroke var(--speed) ease, fill var(--speed) ease;
+}
+
+.arch-box.is-outside rect {
+    fill: var(--surface-sunk);
+    stroke: var(--text-faint);
+    stroke-dasharray: 5 4;
+}
+
+.arch-title {
+    fill: var(--text);
+    font-weight: 600;
+}
+
+.arch-sub {
+    fill: var(--text-muted);
+}
+
+.arch-svg.has-focus .arch-box { opacity: 0.45; }
+.arch-svg.has-focus .arch-box.is-linked { opacity: 1; }
+
+.arch-box:hover rect,
+.arch-box.is-active rect {
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    fill: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+.arch-box.is-outside.is-active rect,
+.arch-box.is-outside:hover rect {
+    stroke: var(--text-muted);
+}
+
+.arch-box:focus-visible rect {
+    stroke: var(--ring);
+    stroke-width: 3;
+}
+
+.arch-panel {
+    --accent: var(--text-muted);
+    margin-top: clamp(1rem, 3vw, 1.5rem);
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+    min-height: 11rem;
+}
+
+.arch-panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+}
+
+.arch-panel h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-stretch: 106%;
+    color: var(--accent);
+}
+
+.arch-panel-head a {
+    font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    font-size: 0.78rem;
+}
+
+.arch-panel p {
+    margin: 0.45rem 0 0.8rem;
+    max-width: 70ch;
+    color: var(--text-muted);
+}
+
+.arch-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.92rem;
+}
+
+.arch-links li {
+    padding-left: 0.75rem;
+    border-left: 2px solid color-mix(in srgb, var(--hot-text) 55%, transparent);
+}
+
+.arch-links .mono {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: var(--text-faint);
+}
+
+.arch-legend {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1.25rem;
+    margin: 1rem 0 0;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+}
+
+.arch-legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.arch-key {
+    width: 1.6rem;
+    height: 0.85rem;
+    border-radius: 4px;
+    border: 1.5px solid var(--text-faint);
+}
+
+.arch-key-service {
+    background: var(--surface);
+}
+
+.arch-key-outside {
+    border-style: dashed;
+    background: var(--surface-sunk);
+}
+
 /* --- Products: one spec row each ---------------------------------------- */
 
 .product {
@@ -819,6 +1039,11 @@ a:hover {
 
     .steam path {
         opacity: var(--steam-opacity);
+        stroke-dasharray: none;
+    }
+
+    .arch-svg .arch-edge.is-on {
+        animation: none;
         stroke-dasharray: none;
     }
 }
