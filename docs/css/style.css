@@ -583,6 +583,7 @@ a:hover {
 .p-toast { --accent: #a35400; }
 .p-vibemon { --accent: #6b34dc; }
 .p-studio { --accent: #2b53cc; }
+.p-models { --accent: #1d7a3c; }
 .p-romty { --accent: #0a6f5f; }
 .p-memory { --accent: #a22c55; }
 .p-librio { --accent: #116a72; }
@@ -592,6 +593,7 @@ a:hover {
     :root:not([data-theme="light"]) .p-toast { --accent: #ffa14a; }
     :root:not([data-theme="light"]) .p-vibemon { --accent: #a78bfa; }
     :root:not([data-theme="light"]) .p-studio { --accent: #7fa2ff; }
+    :root:not([data-theme="light"]) .p-models { --accent: #5ee08c; }
     :root:not([data-theme="light"]) .p-romty { --accent: #4fe8c8; }
     :root:not([data-theme="light"]) .p-memory { --accent: #ff91ba; }
     :root:not([data-theme="light"]) .p-librio { --accent: #45d6c4; }
@@ -601,6 +603,7 @@ a:hover {
 :root[data-theme="dark"] .p-toast { --accent: #ffa14a; }
 :root[data-theme="dark"] .p-vibemon { --accent: #a78bfa; }
 :root[data-theme="dark"] .p-studio { --accent: #7fa2ff; }
+:root[data-theme="dark"] .p-models { --accent: #5ee08c; }
 :root[data-theme="dark"] .p-romty { --accent: #4fe8c8; }
 :root[data-theme="dark"] .p-memory { --accent: #ff91ba; }
 :root[data-theme="dark"] .p-librio { --accent: #45d6c4; }

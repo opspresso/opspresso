@@ -17,18 +17,19 @@ OpsPresso builds services for operating AI agents and tools for the people build
 
 | Service | Purpose |
 | --- | --- |
-| [Agent Studio](https://studio.agrt.dev) | Configure and run agents; manage access, approvals, traces, and daily or monthly spending limits. |
-| [Agent Memory](https://memory.agrt.dev) | Store durable context, recall it across coding clients, and hand off work between sessions. |
-| [Agent Librio](https://librio.agrt.dev) | Collect documents and audio; provide transcription, meeting notes, evidence search, and knowledge graphs. |
-| [Agent Forge](https://forge.agrt.dev) | Run coding agents and commands in isolated sandboxes with persistent workspaces and sessions. |
+| [Agent Studio](https://studio.agrt.dev) | Configure agents with approved models, skills, and MCP tools; run them from chat, APIs, messaging, or automation with approvals, traces, and spending limits. |
+| [Agent Models](https://models.agrt.dev) | Connect model providers, approve models, route requests, and track usage and cost. |
+| [Agent Memory](https://memory.agrt.dev) | Store durable context, recall it in Studio and coding clients, share it by scope, and hand off work between sessions. |
+| [Agent Librio](https://librio.agrt.dev) | Collect documents and audio; provide transcription, meeting notes, source-linked search, knowledge graphs, and ontology objects. |
+| [Agent Forge](https://forge.agrt.dev) | Run coding agents and commands in isolated sandboxes with persistent workspaces, Git workflows, and approved releases. |
 
 ### Developer Tools
 
 | Tool | Purpose |
 | --- | --- |
-| [VibeMon](https://vibemon.io) | Monitor coding-agent activity, multiple accounts, infrastructure metrics, and recent trends. |
-| [romty](https://romty.dev) | Keep terminal sessions running across TUI exits and SSH disconnects. |
-| [Toast](https://toastapp.dev) | Launch apps, commands, files, URLs, scripts, and text snippets from custom button pages. |
+| [VibeMon](https://vibemon.io) | Monitor coding-agent activity, plan usage, and infrastructure metrics on desktop, web, mobile, and ESP32. |
+| [romty](https://romty.dev) | Keep terminal sessions and coding agents running across TUI exits and SSH disconnects. |
+| [Toast](https://toastapp.dev) | Launch apps, commands, files, URLs, and scripts from custom button pages; expand text snippets on macOS. |
 
 ## Preview locally
 
