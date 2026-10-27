@@ -1,0 +1,331 @@
+/* Agent Platform map. One data model drives two SVG layouts: a wide left-to-right
+   flow and a narrow top-to-bottom flow. Selecting a box highlights its links and
+   explains them in the panel below. Without JavaScript the figure caption and the
+   product rows still describe every service. */
+(function () {
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var NARROW = window.matchMedia('(max-width: 640px)');
+
+    // box: [x, y, width, height] in each layout's viewBox units.
+    var NODES = [
+        {
+            id: 'channels', title: 'Entry points', outside: true,
+            sub: ['Console · API · Slack', 'Teams · Telegram · Automation'], short: 'Entry points',
+            box: { wide: [16, 232, 184, 64], narrow: [126, 16, 108, 56] },
+            detail: 'The console, Agent API, Slack, Teams, Telegram, webhooks, and schedules start agent runs in Studio.'
+        },
+        {
+            id: 'coding', title: 'Coding clients', outside: true,
+            sub: ['Claude Code · Codex'], short: 'Coding clients',
+            box: { wide: [16, 52, 184, 64], narrow: [8, 16, 108, 56] },
+            detail: 'Claude Code and Codex connect to Memory directly with a personal client credential and the owner’s current permissions.'
+        },
+        {
+            id: 'plugins', title: 'agent-plugins', outside: true,
+            sub: ['Skills · MCP declarations'], short: 'agent-plugins',
+            box: { wide: [256, 404, 208, 64], narrow: [244, 16, 108, 56] },
+            href: 'https://github.com/opspresso/agent-plugins', linkText: 'Open on GitHub',
+            detail: 'A public repository of task-focused plugins, Agent Skills, and MCP declarations. Studio syncs it. It runs no service of its own.'
+        },
+        {
+            id: 'studio', title: 'Agent Studio', product: true,
+            sub: ['Identity · agents', 'approvals · budgets'], short: 'Agent Studio',
+            box: { wide: [256, 200, 208, 124], narrow: [84, 124, 232, 84] },
+            href: '#agent-studio',
+            detail: 'Owns users, permissions, and agents. It is the OIDC provider for every service, enforces tool approvals and spending limits, and orchestrates work across Memory, Librio, and Forge.'
+        },
+        {
+            id: 'memory', title: 'Agent Memory', product: true,
+            sub: ['Durable context', 'and handoffs'], short: 'Memory',
+            box: { wide: [552, 36, 208, 84], narrow: [8, 268, 108, 76] },
+            href: '#agent-memory',
+            detail: 'Stores rules, preferences, decisions, facts, and lessons with their sources and versions. Studio agents and coding clients recall them and hand work between sessions.'
+        },
+        {
+            id: 'librio', title: 'Agent Librio', product: true,
+            sub: ['Documents, audio,', 'and knowledge'], short: 'Librio',
+            box: { wide: [552, 220, 208, 84], narrow: [126, 268, 108, 76] },
+            href: '#agent-librio',
+            detail: 'Holds documents, recordings, transcripts, meeting notes, and the knowledge graph. Before it spends on models, it asks Studio to authorize, reserve, and settle the cost.'
+        },
+        {
+            id: 'forge', title: 'Agent Forge', product: true,
+            sub: ['Workspaces', 'and sandboxes'], short: 'Forge',
+            box: { wide: [552, 376, 208, 84], narrow: [244, 268, 108, 76] },
+            href: '#agent-forge',
+            detail: 'Keeps persistent workspaces and runs commands and coding CLIs in isolated sandboxes. It asks Studio to authorize model spend and sends sandbox model calls through Models.'
+        },
+        {
+            id: 'sandbox', title: 'Sandboxes', outside: true,
+            sub: ['Docker · Kubernetes'], short: 'Sandboxes',
+            box: { wide: [552, 480, 208, 48], narrow: [244, 404, 108, 52] },
+            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly.'
+        },
+        {
+            id: 'models', title: 'Agent Models', product: true,
+            sub: ['Approve · route', 'record usage'], short: 'Agent Models',
+            box: { wide: [840, 200, 184, 110], narrow: [8, 404, 226, 80] },
+            href: '#agent-models',
+            detail: 'Holds provider connections and keys. Only models an operator approves can be called. Each request’s usage and cost is recorded once, without storing generated content.'
+        },
+        {
+            id: 'providers', title: 'Model providers', outside: true,
+            sub: ['OpenAI · Anthropic', 'Google · xAI · Bedrock', 'OpenRouter · Self-hosted'],
+            subNarrow: ['OpenAI · Anthropic · Google · xAI', 'Bedrock · OpenRouter · Self-hosted'],
+            box: { wide: [840, 404, 184, 112], narrow: [8, 532, 344, 72] },
+            detail: 'OpenAI, Anthropic, Google, xAI, Amazon Bedrock, OpenRouter, and self-hosted endpoints, connected once in Models.'
+        }
+    ];
+
+    // path: hand-routed lines that would otherwise cross a box.
+    var EDGES = [
+        { from: 'channels', to: 'studio', label: 'Requests from people signed in through Studio' },
+        { from: 'coding', to: 'memory', label: 'Personal client credential to recall, remember, and hand off' },
+        { from: 'plugins', to: 'studio', label: 'Studio syncs skills and MCP declarations' },
+        { from: 'studio', to: 'memory', label: 'User grant over MCP for memories and handoffs' },
+        { from: 'studio', to: 'librio', label: 'User grant over HTTP and MCP for documents, graph, and audio' },
+        { from: 'studio', to: 'forge', label: 'User grant for workspaces, runs, and Git' },
+        {
+            from: 'studio', to: 'models', label: 'Per-call grant bound to one request and one approved model',
+            path: {
+                wide: 'M430 324 V332 Q430 342 440 342 H870 Q880 342 880 332 V310',
+                narrow: 'M121 208 V404'
+            }
+        },
+        { from: 'memory', to: 'models', label: 'Per-call grant or service credential' },
+        { from: 'librio', to: 'models', label: 'Per-call grant or service credential' },
+        { from: 'forge', to: 'models', label: 'Per-call grant or service credential, including sandbox calls' },
+        { from: 'forge', to: 'sandbox', label: 'Runs commands and coding CLIs with a run-scoped token' },
+        { from: 'models', to: 'providers', label: 'Only Models holds provider keys' }
+    ];
+
+    var VIEW = { wide: [1040, 540], narrow: [360, 616] };
+
+    var byId = {};
+    NODES.forEach(function (node) { byId[node.id] = node; });
+
+    function el(name, attrs, parent) {
+        var node = document.createElementNS(SVG_NS, name);
+        Object.keys(attrs || {}).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+        if (parent) parent.appendChild(node);
+        return node;
+    }
+
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    // Connect the facing sides of two boxes with a smooth curve.
+    function edgePath(a, b) {
+        var ax = a[0], ay = a[1], aw = a[2], ah = a[3];
+        var bx = b[0], by = b[1], bw = b[2], bh = b[3];
+        var x0, y0, x1, y1, mid;
+        if (by >= ay + ah) {
+            x0 = clamp(bx + bw / 2, ax + 16, ax + aw - 16); y0 = ay + ah;
+            x1 = clamp(x0, bx + 16, bx + bw - 16); y1 = by;
+        } else if (by + bh <= ay) {
+            x0 = clamp(bx + bw / 2, ax + 16, ax + aw - 16); y0 = ay;
+            x1 = clamp(x0, bx + 16, bx + bw - 16); y1 = by + bh;
+        } else {
+            var right = bx >= ax + aw;
+            x0 = right ? ax + aw : ax; x1 = right ? bx : bx + bw;
+            y0 = clamp(by + bh / 2, ay + 14, ay + ah - 14);
+            y1 = clamp(y0, by + 14, by + bh - 14);
+            mid = (x0 + x1) / 2;
+            return 'M' + x0 + ' ' + y0 + ' C' + mid + ' ' + y0 + ' ' + mid + ' ' + y1 + ' ' + x1 + ' ' + y1;
+        }
+        mid = (y0 + y1) / 2;
+        return 'M' + x0 + ' ' + y0 + ' C' + x0 + ' ' + mid + ' ' + x1 + ' ' + mid + ' ' + x1 + ' ' + y1;
+    }
+
+    function linksOf(id) {
+        return EDGES.filter(function (edge) { return edge.from === id || edge.to === id; });
+    }
+
+    function render(map, layout) {
+        var size = VIEW[layout];
+        var narrow = layout === 'narrow';
+        map.textContent = '';
+
+        var svg = el('svg', {
+            viewBox: '0 0 ' + size[0] + ' ' + size[1],
+            role: 'group',
+            'aria-label': 'Agent Platform services and how they connect'
+        }, map);
+        svg.classList.add('arch-svg');
+
+        var defs = el('defs', {}, svg);
+        ['arch-arrow', 'arch-arrow-on'].forEach(function (id) {
+            var marker = el('marker', {
+                id: id, viewBox: '0 0 10 10', refX: 9, refY: 5,
+                markerWidth: 7, markerHeight: 7, orient: 'auto'
+            }, defs);
+            el('path', { d: 'M1 1 9 5 1 9z', 'class': id }, marker);
+        });
+
+        var edgeLayer = el('g', { 'class': 'arch-edges', 'aria-hidden': 'true' }, svg);
+        EDGES.forEach(function (edge) {
+            var d = edge.path ? edge.path[layout] : edgePath(byId[edge.from].box[layout], byId[edge.to].box[layout]);
+            edge.el = el('path', { d: d, 'class': 'arch-edge', 'marker-end': 'url(#arch-arrow)' }, edgeLayer);
+        });
+
+        var nodeLayer = el('g', { 'class': 'arch-nodes' }, svg);
+        NODES.forEach(function (node) {
+            var b = node.box[layout];
+            var g = el('g', {
+                'class': 'arch-box' + (node.product ? ' p-' + node.id : '') + (node.outside ? ' is-outside' : ''),
+                tabindex: 0,
+                role: 'button',
+                'aria-pressed': 'false',
+                'aria-label': node.title + '. ' + node.detail
+            }, nodeLayer);
+            g.dataset.id = node.id;
+            el('rect', { x: b[0], y: b[1], width: b[2], height: b[3], rx: narrow ? 10 : 12 }, g);
+
+            // Small boxes centre a mark and a short name; larger boxes list the role beside the mark.
+            if (narrow && b[2] < 140) {
+                var cx = b[0] + b[2] / 2;
+                var nameY = b[1] + b[3] / 2 + 4;
+                if (node.product) {
+                    el('image', { href: 'images/agent-' + node.id + '.png', x: cx - 12, y: b[1] + 12, width: 24, height: 24 }, g);
+                    nameY = b[1] + b[3] - 16;
+                }
+                el('text', { x: cx, y: nameY, 'text-anchor': 'middle', 'class': 'arch-title', 'font-size': 13 }, g)
+                    .textContent = node.short;
+            } else {
+                var lines = narrow ? (node.subNarrow || node.sub.slice(0, 1)) : node.sub;
+                var titleSize = narrow ? 14 : 15;
+                var lineGap = narrow ? 15 : 16;
+                var iconSize = narrow ? 28 : 32;
+                var tx = b[0] + 16;
+                var top = b[1] + (b[3] - titleSize - lines.length * lineGap) / 2 + titleSize * 0.8;
+                if (node.product) {
+                    el('image', { href: 'images/agent-' + node.id + '.png', x: b[0] + 14, y: b[1] + (b[3] - iconSize) / 2, width: iconSize, height: iconSize }, g);
+                    tx = b[0] + iconSize + 28;
+                }
+                el('text', { x: tx, y: top, 'class': 'arch-title', 'font-size': titleSize }, g).textContent = node.title;
+                lines.forEach(function (line, i) {
+                    el('text', { x: tx, y: top + (i + 1) * lineGap, 'class': 'arch-sub', 'font-size': narrow ? 11.5 : 12 }, g)
+                        .textContent = line;
+                });
+            }
+            node.el = g;
+        });
+
+        return svg;
+    }
+
+    function init() {
+        var map = document.querySelector('[data-arch-map]');
+        var panel = document.querySelector('[data-arch-panel]');
+        if (!map || !panel) return;
+        var figure = map.closest('.arch');
+        var selected = 'studio';
+        var svg;
+
+        function highlight(id) {
+            var linked = {};
+            linked[id] = true;
+            linksOf(id).forEach(function (edge) { linked[edge.from] = true; linked[edge.to] = true; });
+            svg.classList.toggle('has-focus', Boolean(id));
+            NODES.forEach(function (node) {
+                node.el.classList.toggle('is-active', node.id === id);
+                node.el.classList.toggle('is-linked', Boolean(id && linked[node.id]));
+                node.el.setAttribute('aria-pressed', String(node.id === selected));
+            });
+            EDGES.forEach(function (edge) {
+                var on = Boolean(id) && (edge.from === id || edge.to === id);
+                edge.el.classList.toggle('is-on', on);
+                edge.el.setAttribute('marker-end', on ? 'url(#arch-arrow-on)' : 'url(#arch-arrow)');
+            });
+        }
+
+        function describe(id) {
+            var node = byId[id];
+            panel.textContent = '';
+            panel.className = 'arch-panel' + (node.product ? ' p-' + node.id : '');
+
+            var head = document.createElement('div');
+            head.className = 'arch-panel-head';
+            var title = document.createElement('h4');
+            title.className = 'display';
+            title.textContent = node.title;
+            head.appendChild(title);
+            if (node.href) {
+                var link = document.createElement('a');
+                link.href = node.href;
+                link.textContent = node.linkText || 'Details';
+                if (node.href.charAt(0) !== '#') {
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                }
+                head.appendChild(link);
+            }
+            panel.appendChild(head);
+
+            var text = document.createElement('p');
+            text.textContent = node.detail;
+            panel.appendChild(text);
+
+            var list = document.createElement('ul');
+            list.className = 'arch-links';
+            linksOf(id).forEach(function (edge) {
+                var item = document.createElement('li');
+                var route = document.createElement('span');
+                route.className = 'mono';
+                route.textContent = byId[edge.from].title + ' → ' + byId[edge.to].title;
+                item.appendChild(route);
+                item.appendChild(document.createTextNode(edge.label));
+                list.appendChild(item);
+            });
+            panel.appendChild(list);
+        }
+
+        function select(id) {
+            selected = id;
+            highlight(id);
+            describe(id);
+        }
+
+        function draw() {
+            svg = render(map, NARROW.matches ? 'narrow' : 'wide');
+            highlight(selected);
+        }
+
+        map.addEventListener('click', function (event) {
+            var box = event.target.closest('.arch-box');
+            if (box) select(box.dataset.id);
+        });
+        map.addEventListener('keydown', function (event) {
+            var box = event.target.closest('.arch-box');
+            if (box && (event.key === 'Enter' || event.key === ' ')) {
+                event.preventDefault();
+                select(box.dataset.id);
+            }
+        });
+        map.addEventListener('focusin', function (event) {
+            var box = event.target.closest('.arch-box');
+            if (box) select(box.dataset.id);
+        });
+        // Hover previews a box; leaving the map returns to the selected one.
+        map.addEventListener('pointerover', function (event) {
+            var box = event.target.closest('.arch-box');
+            if (box && event.pointerType === 'mouse') highlight(box.dataset.id);
+        });
+        map.addEventListener('pointerleave', function () {
+            highlight(selected);
+        });
+
+        NARROW.addEventListener('change', draw);
+
+        draw();
+        describe(selected);
+        figure.classList.add('is-ready');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

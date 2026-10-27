@@ -113,7 +113,19 @@
                     <p class="lead">Dedicated services for agent orchestration, model routing, durable context, grounded knowledge, and isolated execution. Deploy them in your own environment and connect the services you need.</p>
                 </div>
 
-                <article class="product p-studio">
+                <figure class="arch" aria-labelledby="arch-title">
+                    <figcaption class="arch-head">
+                        <h3 class="display" id="arch-title">How the services fit together</h3>
+                        <p>Studio owns identity and orchestration. Memory, Librio, and Forge do the work. Models is the only service that holds provider keys.</p>
+                    </figcaption>
+                    <div class="arch-map" data-arch-map></div>
+                    <div class="arch-panel" data-arch-panel aria-live="polite">
+                        <p>Select a box to see what each part owns and how it connects.</p>
+                    </div>
+                    <p class="mono arch-legend"><span><span class="arch-key arch-key-service"></span>Platform service</span><span><span class="arch-key arch-key-outside"></span>Client, content, or external system</span></p>
+                </figure>
+
+                <article class="product p-studio" id="agent-studio">
                     <img class="product-mark" src="images/agent-studio.png" alt="Agent Studio" width="72" height="72" loading="lazy">
                     <div>
                         <h3 class="display product-name">Agent Studio</h3>
@@ -137,7 +149,7 @@
                     </div>
                 </article>
 
-                <article class="product p-models">
+                <article class="product p-models" id="agent-models">
                     <img class="product-mark" src="images/agent-models.png" alt="Agent Models" width="72" height="72" loading="lazy">
                     <div>
                         <h3 class="display product-name">Agent Models</h3>
@@ -161,7 +173,7 @@
                     </div>
                 </article>
 
-                <article class="product p-memory">
+                <article class="product p-memory" id="agent-memory">
                     <img class="product-mark" src="images/agent-memory.png" alt="Agent Memory" width="72" height="72" loading="lazy">
                     <div>
                         <h3 class="display product-name">Agent Memory</h3>
@@ -185,7 +197,7 @@
                     </div>
                 </article>
 
-                <article class="product p-librio">
+                <article class="product p-librio" id="agent-librio">
                     <img class="product-mark" src="images/agent-librio.png" alt="Agent Librio" width="72" height="72" loading="lazy">
                     <div>
                         <h3 class="display product-name">Agent Librio</h3>
@@ -209,7 +221,7 @@
                     </div>
                 </article>
 
-                <article class="product p-forge">
+                <article class="product p-forge" id="agent-forge">
                     <img class="product-mark" src="images/agent-forge.png" alt="Agent Forge" width="72" height="72" loading="lazy">
                     <div>
                         <h3 class="display product-name">Agent Forge</h3>
@@ -392,6 +404,7 @@
     </footer>
 
     <script src="js/theme.js"></script>
+    <script src="js/platform-map.js" defer></script>
 </body>
 
 </html>
