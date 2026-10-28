@@ -806,9 +806,9 @@ path.arch-arrow-on { fill: var(--hot-text); }
 .p-models { --accent: #1d7a3c; }
 .p-romty { --accent: #0a6f5f; }
 .p-memory { --accent: #a22c55; }
-.p-librio { --accent: #116a72; }
+.p-knowledge { --accent: #116a72; }
 .p-forge { --accent: #a35400; }
-.p-broker { --accent: #7a2fc0; }
+.p-delivery { --accent: #7a2fc0; }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) .p-toast { --accent: #ffa14a; }
@@ -817,9 +817,9 @@ path.arch-arrow-on { fill: var(--hot-text); }
     :root:not([data-theme="light"]) .p-models { --accent: #5ee08c; }
     :root:not([data-theme="light"]) .p-romty { --accent: #4fe8c8; }
     :root:not([data-theme="light"]) .p-memory { --accent: #ff91ba; }
-    :root:not([data-theme="light"]) .p-librio { --accent: #45d6c4; }
+    :root:not([data-theme="light"]) .p-knowledge { --accent: #45d6c4; }
     :root:not([data-theme="light"]) .p-forge { --accent: #ffa14a; }
-    :root:not([data-theme="light"]) .p-broker { --accent: #c9a2ff; }
+    :root:not([data-theme="light"]) .p-delivery { --accent: #c9a2ff; }
 }
 
 :root[data-theme="dark"] .p-toast { --accent: #ffa14a; }
@@ -828,9 +828,9 @@ path.arch-arrow-on { fill: var(--hot-text); }
 :root[data-theme="dark"] .p-models { --accent: #5ee08c; }
 :root[data-theme="dark"] .p-romty { --accent: #4fe8c8; }
 :root[data-theme="dark"] .p-memory { --accent: #ff91ba; }
-:root[data-theme="dark"] .p-librio { --accent: #45d6c4; }
+:root[data-theme="dark"] .p-knowledge { --accent: #45d6c4; }
 :root[data-theme="dark"] .p-forge { --accent: #ffa14a; }
-:root[data-theme="dark"] .p-broker { --accent: #c9a2ff; }
+:root[data-theme="dark"] .p-delivery { --accent: #c9a2ff; }
 
 @media (max-width: 820px) {
     .product {

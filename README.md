@@ -20,9 +20,9 @@ OpsPresso builds services for operating AI agents and tools for the people build
 | [Agent Studio](https://studio.agrt.dev) | Configure agents with approved models, skills, and MCP tools; run them from chat, APIs, messaging, or automation with approvals, traces, and spending limits. |
 | [Agent Models](https://models.agrt.dev) | Connect model providers, approve models, route requests, and track usage and cost. |
 | [Agent Memory](https://memory.agrt.dev) | Store durable context, recall it in Studio and coding clients, share it by scope, and hand off work between sessions. |
-| [Agent Librio](https://librio.agrt.dev) | Collect documents and audio; provide transcription, meeting notes, source-linked search, knowledge graphs, and ontology objects. |
+| [Agent Knowledge](https://knowledge.agrt.dev) | Collect documents and audio; provide transcription, meeting notes, source-linked search, knowledge graphs, and ontology objects. |
 | [Agent Forge](https://forge.agrt.dev) | Run coding agents and commands in isolated sandboxes with persistent workspaces, Git workflows, and approved releases. |
-| [Agent Broker](https://broker.agrt.dev) | Create PostgreSQL databases, storage prefixes, and secrets for agent-built apps; deliver dev values to Forge runs and prod values through External Secrets. |
+| [Agent Delivery](https://delivery.agrt.dev) | Create PostgreSQL databases, storage prefixes, and secrets for agent-built apps; deliver dev values to Forge runs and prod values through External Secrets. |
 
 ### Developer Tools
 

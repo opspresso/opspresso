@@ -32,7 +32,7 @@
             sub: ['Identity · agents', 'approvals · budgets'], short: 'Agent Studio',
             box: { wide: [256, 200, 208, 124], narrow: [84, 124, 232, 84] },
             href: '#agent-studio',
-            detail: 'Owns users, permissions, and agents. It is the OIDC provider for every service, enforces tool approvals and spending limits, and orchestrates work across Memory, Librio, Forge, and Broker.'
+            detail: 'Owns users, permissions, and agents. It is the OIDC provider for every service, enforces tool approvals and spending limits, and orchestrates work across Memory, Knowledge, Forge, and Delivery.'
         },
         {
             id: 'memory', title: 'Agent Memory', product: true,
@@ -42,10 +42,10 @@
             detail: 'Stores rules, preferences, decisions, facts, and lessons with their sources and versions. Studio agents and coding clients recall them and hand work between sessions.'
         },
         {
-            id: 'librio', title: 'Agent Librio', product: true,
-            sub: ['Documents, audio,', 'and knowledge'], short: 'Librio',
+            id: 'knowledge', title: 'Agent Knowledge', product: true,
+            sub: ['Documents, audio,', 'and knowledge'], short: 'Knowledge',
             box: { wide: [552, 196, 208, 84], narrow: [100, 268, 78, 76] },
-            href: '#agent-librio',
+            href: '#agent-knowledge',
             detail: 'Holds documents, recordings, transcripts, meeting notes, and the knowledge graph. Before it spends on models, it asks Studio to authorize, reserve, and settle the cost.'
         },
         {
@@ -53,20 +53,20 @@
             sub: ['Workspaces', 'and sandboxes'], short: 'Forge',
             box: { wide: [552, 372, 208, 84], narrow: [186, 268, 78, 76] },
             href: '#agent-forge',
-            detail: 'Keeps persistent workspaces and runs commands and coding CLIs in isolated sandboxes. It asks Studio to authorize model spend, sends sandbox model calls through Models, and injects Broker’s dev values into each run.'
+            detail: 'Keeps persistent workspaces and runs commands and coding CLIs in isolated sandboxes. It asks Studio to authorize model spend, sends sandbox model calls through Models, and injects Agent Delivery’s dev values into each run.'
         },
         {
-            id: 'broker', title: 'Agent Broker', product: true,
-            sub: ['App resources', 'and secrets'], short: 'Broker',
+            id: 'delivery', title: 'Agent Delivery', product: true,
+            sub: ['App resources', 'and secrets'], short: 'Delivery',
             box: { wide: [552, 532, 208, 84], narrow: [274, 268, 78, 76] },
-            href: '#agent-broker',
+            href: '#agent-delivery',
             detail: 'Creates PostgreSQL databases, storage prefixes, and secrets for each repository’s dev and prod environments. Values stay in the secret store. Its MCP tools never return them.'
         },
         {
             id: 'sandbox', title: 'Sandboxes', outside: true,
             sub: ['Docker · Kubernetes'], short: 'Sandboxes',
             box: { wide: [840, 388, 184, 52], narrow: [186, 400, 78, 56] },
-            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly. Dev values from Broker are masked in run output.'
+            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly. Dev values from Agent Delivery are masked in run output.'
         },
         {
             id: 'models', title: 'Agent Models', product: true,
@@ -105,10 +105,10 @@
             from: 'studio', to: 'memory', label: 'User grant over MCP for memories and handoffs',
             path: { narrow: 'M100 208 C100 240 47 236 47 268' }
         },
-        { from: 'studio', to: 'librio', label: 'User grant over HTTP and MCP for documents, graph, and audio' },
+        { from: 'studio', to: 'knowledge', label: 'User grant over HTTP and MCP for documents, graph, and audio' },
         { from: 'studio', to: 'forge', label: 'User grant for workspaces, runs, and Git' },
         {
-            from: 'studio', to: 'broker', label: 'User grant over MCP for projects and resources, without values or deletes',
+            from: 'studio', to: 'delivery', label: 'User grant over MCP for projects and resources, without values or deletes',
             path: {
                 wide: 'M400 324 V564 Q400 574 410 574 H552',
                 narrow: 'M300 208 C300 240 313 236 313 268'
@@ -122,14 +122,14 @@
             }
         },
         { from: 'memory', to: 'models', label: 'Per-call grant or service credential' },
-        { from: 'librio', to: 'models', label: 'Per-call grant or service credential' },
+        { from: 'knowledge', to: 'models', label: 'Per-call grant or service credential' },
         { from: 'forge', to: 'models', label: 'Per-call grant or service credential, including sandbox calls' },
         { from: 'forge', to: 'sandbox', label: 'Runs commands and coding CLIs with a run-scoped token' },
         {
-            from: 'forge', to: 'broker', label: 'Short-lived token exchange, then dev values for one run',
+            from: 'forge', to: 'delivery', label: 'Short-lived token exchange, then dev values for one run',
             path: { narrow: 'M244 344 C244 372 300 372 300 344' }
         },
-        { from: 'broker', to: 'resources', label: 'Creates databases and prefixes, and stores values in SSM' },
+        { from: 'delivery', to: 'resources', label: 'Creates databases and prefixes, and stores values in SSM' },
         { from: 'resources', to: 'apps', label: 'External Secrets delivers prod values; Pod Identity limits the prefix' },
         { from: 'models', to: 'providers', label: 'Only Models holds provider keys' }
     ];

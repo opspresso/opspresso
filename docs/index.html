@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpsPresso — Platforms and tools for AI agents</title>
-    <meta name="description" content="Build and operate AI agents with Studio, Models, Memory, Librio, Forge, and Broker. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta name="description" content="Build and operate AI agents with Studio, Models, Memory, Knowledge, Forge, and Delivery. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
 
     <link rel="canonical" href="https://opspresso.com/">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opspresso.com/">
     <meta property="og:title" content="OpsPresso — Platforms and tools for AI agents">
-    <meta property="og:description" content="Build and operate AI agents with Studio, Models, Memory, Librio, Forge, and Broker. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta property="og:description" content="Build and operate AI agents with Studio, Models, Memory, Knowledge, Forge, and Delivery. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
     <meta property="og:site_name" content="OpsPresso">
     <meta property="og:image" content="https://opspresso.com/images/og.png">
     <meta property="og:image:type" content="image/png">
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="OpsPresso — Platforms and tools for AI agents">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OpsPresso — Platforms and tools for AI agents">
-    <meta name="twitter:description" content="Build and operate AI agents with Studio, Models, Memory, Librio, Forge, and Broker. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta name="twitter:description" content="Build and operate AI agents with Studio, Models, Memory, Knowledge, Forge, and Delivery. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
     <meta name="twitter:image" content="https://opspresso.com/images/og.png">
     <meta name="twitter:image:alt" content="OpsPresso — Platforms and tools for AI agents">
 
@@ -123,7 +123,7 @@
                 <figure class="arch" aria-labelledby="arch-title">
                     <figcaption class="arch-head">
                         <h3 class="display" id="arch-title">How the services fit together</h3>
-                        <p>Studio owns identity and orchestration. Memory, Librio, Forge, and Broker do the work. Only Models holds provider keys, and only Broker creates app resources.</p>
+                        <p>Studio owns identity and orchestration. Memory, Knowledge, Forge, and Delivery do the work. Only Models holds provider keys, and only Agent Delivery creates app resources.</p>
                     </figcaption>
                     <div class="arch-map" data-arch-map></div>
                     <div class="arch-panel" data-arch-panel aria-live="polite">
@@ -204,12 +204,12 @@
                     </div>
                 </article>
 
-                <article class="product p-librio" id="agent-librio">
-                    <img class="product-mark" src="images/agent-librio.png" alt="Agent Librio" width="72" height="72" loading="lazy">
+                <article class="product p-knowledge" id="agent-knowledge">
+                    <img class="product-mark" src="images/agent-knowledge.png" alt="Agent Knowledge" width="72" height="72" loading="lazy">
                     <div>
-                        <h3 class="display product-name">Agent Librio</h3>
-                        <a class="product-url" href="https://librio.agrt.dev" target="_blank" rel="noopener">
-                            librio.agrt.dev
+                        <h3 class="display product-name">Agent Knowledge</h3>
+                        <a class="product-url" href="https://knowledge.agrt.dev" target="_blank" rel="noopener">
+                            knowledge.agrt.dev
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M7 17 17 7M9 7h8v8"/>
                             </svg>
@@ -251,12 +251,12 @@
                         </ul>
                     </div>
                 </article>
-                <article class="product p-broker" id="agent-broker">
-                    <img class="product-mark" src="images/agent-broker.png" alt="Agent Broker" width="72" height="72" loading="lazy">
+                <article class="product p-delivery" id="agent-delivery">
+                    <img class="product-mark" src="images/agent-delivery.png" alt="Agent Delivery" width="72" height="72" loading="lazy">
                     <div>
-                        <h3 class="display product-name">Agent Broker</h3>
-                        <a class="product-url" href="https://broker.agrt.dev" target="_blank" rel="noopener">
-                            broker.agrt.dev
+                        <h3 class="display product-name">Agent Delivery</h3>
+                        <a class="product-url" href="https://delivery.agrt.dev" target="_blank" rel="noopener">
+                            delivery.agrt.dev
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M7 17 17 7M9 7h8v8"/>
                             </svg>
@@ -294,14 +294,14 @@
                         <p>An agent in Studio takes the request with approved models, skills, and MCP tools. Studio enforces tool approvals and spending limits.</p>
                         <p class="mono flow-svc">Agent Studio · Agent Models</p>
                     </li>
-                    <li class="flow-step p-broker">
+                    <li class="flow-step p-delivery">
                         <div class="flow-head">
                             <span class="mono flow-num">02</span>
-                            <span class="flow-marks"><img src="images/agent-broker.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="flow-marks"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
                         <h3 class="display">Provision</h3>
-                        <p>The agent asks Broker for a PostgreSQL database or a storage prefix for the repository. You enter secret values in the Broker console, so they never pass through chat.</p>
-                        <p class="mono flow-svc">Agent Broker</p>
+                        <p>The agent asks Agent Delivery for a PostgreSQL database or a storage prefix for the repository. You enter secret values in the Agent Delivery console, so they never pass through chat.</p>
+                        <p class="mono flow-svc">Agent Delivery</p>
                     </li>
                     <li class="flow-step p-forge">
                         <div class="flow-head">
@@ -315,11 +315,11 @@
                     <li class="flow-step is-ship">
                         <div class="flow-head">
                             <span class="mono flow-num">04</span>
-                            <span class="flow-marks"><img src="images/agent-forge.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-broker.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="flow-marks"><img src="images/agent-forge.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
                         <h3 class="display">Ship</h3>
                         <p>Review the diff, then approve the merge and the release in Forge. GitOps deploys the app, and External Secrets delivers its prod values from the secret store.</p>
-                        <p class="mono flow-svc">Agent Forge · Agent Broker</p>
+                        <p class="mono flow-svc">Agent Forge · Agent Delivery</p>
                     </li>
                 </ol>
             </div>
@@ -454,9 +454,9 @@
                         <li><a href="https://studio.agrt.dev" target="_blank" rel="noopener">Agent Studio</a></li>
                         <li><a href="https://models.agrt.dev" target="_blank" rel="noopener">Agent Models</a></li>
                         <li><a href="https://memory.agrt.dev" target="_blank" rel="noopener">Agent Memory</a></li>
-                        <li><a href="https://librio.agrt.dev" target="_blank" rel="noopener">Agent Librio</a></li>
+                        <li><a href="https://knowledge.agrt.dev" target="_blank" rel="noopener">Agent Knowledge</a></li>
                         <li><a href="https://forge.agrt.dev" target="_blank" rel="noopener">Agent Forge</a></li>
-                        <li><a href="https://broker.agrt.dev" target="_blank" rel="noopener">Agent Broker</a></li>
+                        <li><a href="https://delivery.agrt.dev" target="_blank" rel="noopener">Agent Delivery</a></li>
                     </ul>
                 </nav>
                 <nav class="footer-col" aria-label="Developer Tools">
