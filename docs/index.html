@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpsPresso — Platforms and tools for AI agents</title>
-    <meta name="description" content="Build and operate AI agents with Studio, Models, Memory, Knowledge, Forge, and Delivery. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta name="description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Delivery. Plus VibeMon, romty, and Toast.">
 
     <link rel="canonical" href="https://opspresso.com/">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opspresso.com/">
     <meta property="og:title" content="OpsPresso — Platforms and tools for AI agents">
-    <meta property="og:description" content="Build and operate AI agents with Studio, Models, Memory, Knowledge, Forge, and Delivery. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta property="og:description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Delivery. Plus VibeMon, romty, and Toast.">
     <meta property="og:site_name" content="OpsPresso">
     <meta property="og:image" content="https://opspresso.com/images/og.png">
     <meta property="og:image:type" content="image/png">
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="OpsPresso — Platforms and tools for AI agents">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OpsPresso — Platforms and tools for AI agents">
-    <meta name="twitter:description" content="Build and operate AI agents with Studio, Models, Memory, Knowledge, Forge, and Delivery. Monitor resources and improve daily workflows with VibeMon, romty, and Toast.">
+    <meta name="twitter:description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Delivery. Plus VibeMon, romty, and Toast.">
     <meta name="twitter:image" content="https://opspresso.com/images/og.png">
     <meta name="twitter:image:alt" content="OpsPresso — Platforms and tools for AI agents">
 
@@ -94,7 +94,7 @@
             <div class="shell hero-inner">
                 <p class="mono eyebrow">Agent platforms · Developer tools · Reliable operations</p>
                 <h1 class="display">Platforms &amp; tools<br><span class="hero-emphasis">for AI agents.</span></h1>
-                <p class="lead">Build and operate AI agents with governed models, memory, knowledge, isolated workspaces, and the resources their apps need. Keep everyday work moving with monitoring, terminal, and launcher tools.</p>
+                <p class="lead">Build agents and take apps from an idea to deployment. Connect model routing, memory, knowledge, coding workspaces, and app delivery. Keep everyday work moving with monitoring, terminal, and launcher tools.</p>
                 <div class="hero-actions">
                     <a class="btn btn-hot" href="#platform">
                         Explore the platform
@@ -117,13 +117,13 @@
             <div class="shell">
                 <div class="section-head">
                     <h2 class="display">Agent Platform</h2>
-                    <p class="lead">Dedicated services for agent orchestration, model routing, durable context, grounded knowledge, isolated execution, and app resources. Deploy them in your own environment and connect the services you need.</p>
+                    <p class="lead">Six independent services, from agent orchestration to app delivery. Each owns its settings, data, permissions, and console. Studio brings their capabilities into agent conversations; each service stays responsible for its work.</p>
                 </div>
 
                 <figure class="arch" aria-labelledby="arch-title">
                     <figcaption class="arch-head">
                         <h3 class="display" id="arch-title">How the services fit together</h3>
-                        <p>Studio owns identity and orchestration. Memory, Knowledge, Forge, and Delivery do the work. Only Models holds provider keys, and only Agent Delivery creates app resources.</p>
+                        <p>Studio provides identity and orchestration. MCP connects agents to Memory, Knowledge, Forge, and Delivery. Models routes model calls. Forge develops the code; Delivery builds and deploys the app.</p>
                     </figcaption>
                     <div class="arch-map" data-arch-map></div>
                     <div class="arch-panel" data-arch-panel aria-live="polite">
@@ -131,6 +131,17 @@
                     </div>
                     <p class="mono arch-legend"><span><span class="arch-key arch-key-service"></span>Platform service</span><span><span class="arch-key arch-key-outside"></span>Client, content, or external system</span></p>
                 </figure>
+
+                <aside class="platform-foundations" aria-label="Shared platform foundations">
+                    <div>
+                        <h3 class="display">Shared contracts</h3>
+                        <p><code>agent-platform</code> holds architecture, service contracts, acceptance scenarios, and shared CI workflows. It keeps the services aligned as they evolve.</p>
+                    </div>
+                    <div>
+                        <h3 class="display"><a href="https://github.com/opspresso/agent-plugins" target="_blank" rel="noopener">Skills &amp; plugins ↗</a></h3>
+                        <p><code>agent-plugins</code> supplies reusable task guidance and MCP declarations for coding, research, design, and operations. Connections and permissions stay with the host and services.</p>
+                    </div>
+                </aside>
 
                 <article class="product p-studio" id="agent-studio">
                     <img class="product-mark" src="images/agent-studio.png" alt="Agent Studio" width="72" height="72" loading="lazy">
@@ -242,12 +253,12 @@
                     </div>
                     <div class="product-body">
                         <p class="product-pitch">Give agent work a place to run.</p>
-                        <p class="product-detail">Run commands and Codex, Claude, or OpenCode sessions in Docker or Kubernetes sandboxes. Workspaces and sessions persist across suspend and resume. Connect GitHub, push branches and pull requests, and approve merges, releases, and deploys after reviewing the diff.</p>
+                        <p class="product-detail">Run commands and Codex, Claude, or OpenCode sessions in Docker or Kubernetes sandboxes. Keep workspaces and sessions across suspend and resume. Manage profiles, GitHub connections, execution history, and protected Git actions in Forge, with approvals tied to the work being published.</p>
                         <ul class="tags">
                             <li>Persistent workspaces</li>
                             <li>Coding CLI sessions</li>
                             <li>Workspace profiles</li>
-                            <li>Approved releases</li>
+                            <li>Git approvals</li>
                         </ul>
                     </div>
                 </article>
@@ -261,16 +272,16 @@
                                 <path d="M7 17 17 7M9 7h8v8"/>
                             </svg>
                         </a>
-                        <p class="mono product-platform">Console · MCP · External Secrets</p>
+                        <p class="mono product-platform">Console · MCP · Argo Workflows</p>
                     </div>
                     <div class="product-body">
-                        <p class="product-pitch">Real databases and secrets for the apps agents build.</p>
-                        <p class="product-detail">Create PostgreSQL databases, object-storage prefixes, and secrets for each repository's dev and prod environments. Agents request them over MCP, and you enter secret values in the console, never in chat. Forge runs receive dev values masked in their output. Deployed apps receive prod values through External Secrets.</p>
+                        <p class="product-pitch">Take the apps agents build into production.</p>
+                        <p class="product-detail">Apply <code>application.yaml</code> to provision app resources and deliver secrets to workspaces and deployed apps. Build and test with Argo Workflows, deploy through GitOps, and promote the same release across environments. Review approvals, deployment logs, and rollback targets in Delivery. Enter secret values in its console, outside chat.</p>
                         <ul class="tags">
-                            <li>PostgreSQL databases</li>
-                            <li>Storage prefixes</li>
+                            <li>App resources</li>
                             <li>Secret delivery</li>
-                            <li>Audit trail</li>
+                            <li>Build &amp; deploy</li>
+                            <li>Promote &amp; rollback</li>
                         </ul>
                     </div>
                 </article>
@@ -281,45 +292,45 @@
             <div class="shell">
                 <div class="section-head">
                     <h2 class="display">From request to running app</h2>
-                    <p class="lead">One path from an agent request to a deployed app. Each service does one part. Git, the secret store, and GitOps hold the state.</p>
+                    <p class="lead">Plan in Studio, develop in Forge, and ship with Delivery. Keep decisions in Memory and source documents in Knowledge. Review protected actions in the service that owns them.</p>
                 </div>
 
                 <ol class="flow">
                     <li class="flow-step p-studio">
                         <div class="flow-head">
                             <span class="mono flow-num">01</span>
-                            <span class="flow-marks"><img src="images/agent-studio.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-models.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="flow-marks"><img src="images/agent-studio.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-memory.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-knowledge.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
-                        <h3 class="display">Ask</h3>
-                        <p>An agent in Studio takes the request with approved models, skills, and MCP tools. Studio enforces tool approvals and spending limits.</p>
-                        <p class="mono flow-svc">Agent Studio · Agent Models</p>
-                    </li>
-                    <li class="flow-step p-delivery">
-                        <div class="flow-head">
-                            <span class="mono flow-num">02</span>
-                            <span class="flow-marks"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
-                        </div>
-                        <h3 class="display">Provision</h3>
-                        <p>The agent asks Agent Delivery for a PostgreSQL database or a storage prefix for the repository. You enter secret values in the Agent Delivery console, so they never pass through chat.</p>
-                        <p class="mono flow-svc">Agent Delivery</p>
+                        <h3 class="display">Plan</h3>
+                        <p>Describe the app in Studio. The agent uses approved models and MCP tools, recalls decisions from Memory, and finds source material in Knowledge.</p>
+                        <p class="mono flow-svc">Studio · Models · Memory · Knowledge</p>
                     </li>
                     <li class="flow-step p-forge">
                         <div class="flow-head">
-                            <span class="mono flow-num">03</span>
-                            <span class="flow-marks"><img src="images/agent-forge.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-memory.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="mono flow-num">02</span>
+                            <span class="flow-marks"><img src="images/agent-forge.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
-                        <h3 class="display">Build</h3>
-                        <p>Forge runs the coding CLI in an isolated sandbox with the dev values injected and masked in its output. Memory carries decisions and handoffs between sessions.</p>
-                        <p class="mono flow-svc">Agent Forge · Agent Memory</p>
+                        <h3 class="display">Develop</h3>
+                        <p>Forge writes code and application.yaml, runs checks in a sandbox, and opens a pull request. Review the diff and approve protected Git actions in Forge.</p>
+                        <p class="mono flow-svc">Agent Forge</p>
                     </li>
-                    <li class="flow-step is-ship">
+                    <li class="flow-step p-delivery">
+                        <div class="flow-head">
+                            <span class="mono flow-num">03</span>
+                            <span class="flow-marks"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
+                        </div>
+                        <h3 class="display">Provision</h3>
+                        <p>Apply application.yaml in Delivery to create resources for each environment. Enter secrets in its console. Forge receives development values; deployed apps receive values through External Secrets.</p>
+                        <p class="mono flow-svc">Agent Delivery</p>
+                    </li>
+                    <li class="flow-step p-delivery is-ship">
                         <div class="flow-head">
                             <span class="mono flow-num">04</span>
-                            <span class="flow-marks"><img src="images/agent-forge.png" alt="" width="34" height="34" loading="lazy"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="flow-marks"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
-                        <h3 class="display">Ship</h3>
-                        <p>Review the diff, then approve the merge and the release in Forge. GitOps deploys the app, and External Secrets delivers its prod values from the secret store.</p>
-                        <p class="mono flow-svc">Agent Forge · Agent Delivery</p>
+                        <h3 class="display">Deploy &amp; operate</h3>
+                        <p>Delivery builds and tests a release, then deploys it through GitOps. Promote the same release with the required approval, inspect logs, or roll back to the previous release.</p>
+                        <p class="mono flow-svc">Agent Delivery · Argo Workflows · GitOps</p>
                     </li>
                 </ol>
             </div>
@@ -457,6 +468,7 @@
                         <li><a href="https://knowledge.agrt.dev" target="_blank" rel="noopener">Agent Knowledge</a></li>
                         <li><a href="https://forge.agrt.dev" target="_blank" rel="noopener">Agent Forge</a></li>
                         <li><a href="https://delivery.agrt.dev" target="_blank" rel="noopener">Agent Delivery</a></li>
+                        <li><a href="https://github.com/opspresso/agent-plugins" target="_blank" rel="noopener">Skills &amp; plugins</a></li>
                     </ul>
                 </nav>
                 <nav class="footer-col" aria-label="Developer Tools">

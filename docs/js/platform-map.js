@@ -29,10 +29,10 @@
         },
         {
             id: 'studio', title: 'Agent Studio', product: true,
-            sub: ['Identity · agents', 'approvals · budgets'], short: 'Agent Studio',
+            sub: ['Identity · agents', 'MCP orchestration'], short: 'Agent Studio',
             box: { wide: [256, 200, 208, 124], narrow: [84, 124, 232, 84] },
             href: '#agent-studio',
-            detail: 'Owns users, permissions, and agents. It is the OIDC provider for every service, enforces tool approvals and spending limits, and orchestrates work across Memory, Knowledge, Forge, and Delivery.'
+            detail: 'Owns agent configuration, conversations, run traces, and execution policy. Provides OIDC identity for the platform and connects to Memory, Knowledge, Forge, and Delivery through MCP. Each service owns its console, data, settings, and approvals.'
         },
         {
             id: 'memory', title: 'Agent Memory', product: true,
@@ -46,21 +46,21 @@
             sub: ['Documents, audio,', 'and knowledge'], short: 'Knowledge',
             box: { wide: [552, 196, 208, 84], narrow: [100, 268, 78, 76] },
             href: '#agent-knowledge',
-            detail: 'Holds documents, recordings, transcripts, meeting notes, and the knowledge graph. Before it spends on models, it asks Studio to authorize, reserve, and settle the cost.'
+            detail: 'Owns documents, recordings, transcripts, meeting notes, and source-linked knowledge. Its console manages audio profiles and processing history; retrieval respects source permissions. Model calls go through Models.'
         },
         {
             id: 'forge', title: 'Agent Forge', product: true,
             sub: ['Workspaces', 'and sandboxes'], short: 'Forge',
             box: { wide: [552, 372, 208, 84], narrow: [186, 268, 78, 76] },
             href: '#agent-forge',
-            detail: 'Keeps persistent workspaces and runs commands and coding CLIs in isolated sandboxes. It asks Studio to authorize model spend, sends sandbox model calls through Models, and injects Agent Delivery’s dev values into each run.'
+            detail: 'Owns persistent workspaces, execution profiles, GitHub connections, and protected Git approvals. Runs commands and coding CLIs in isolated sandboxes, routes model calls through Models, and receives development values from Delivery.'
         },
         {
             id: 'delivery', title: 'Agent Delivery', product: true,
-            sub: ['App resources', 'and secrets'], short: 'Delivery',
+            sub: ['Resources · secrets', 'build · deploy · promote'], short: 'Delivery',
             box: { wide: [552, 532, 208, 84], narrow: [274, 268, 78, 76] },
             href: '#agent-delivery',
-            detail: 'Creates PostgreSQL databases, storage prefixes, and secrets for each repository’s dev and prod environments. Values stay in the secret store. Its MCP tools never return them.'
+            detail: 'Applies application.yaml, provisions app resources, and delivers secrets. Owns releases, deployment approvals, logs, environment promotion, and rollback. Argo Workflows builds and tests; GitOps deploys the release. Secret values stay outside MCP responses.'
         },
         {
             id: 'sandbox', title: 'Sandboxes', outside: true,
@@ -90,9 +90,21 @@
         },
         {
             id: 'apps', title: 'Deployed apps', outside: true,
-            sub: ['GitOps · External Secrets'], short: 'Deployed apps',
-            box: { wide: [840, 666, 184, 64], narrow: [186, 528, 166, 84] },
-            detail: 'Each project environment runs in its own namespace that GitOps declares. External Secrets reads only that environment’s values. A restart applies changed values.'
+            sub: ['Release · environment', 'GitOps · External Secrets'], short: 'Deployed apps',
+            box: { wide: [840, 666, 184, 64], narrow: [186, 592, 166, 68] },
+            detail: 'GitOps declares the release for each project environment. Delivery tracks deployment results, promotes the same image digest, and can roll back to a previous release. External Secrets supplies environment values.'
+        },
+        {
+            id: 'workflows', title: 'Build & deploy', outside: true,
+            sub: ['Argo Workflows · GitOps'], short: 'Build & deploy',
+            box: { wide: [552, 666, 208, 64], narrow: [186, 498, 166, 56] },
+            detail: 'Delivery submits and observes build, test, and deployment workflows. A release records its source revision and image digest. GitOps applies the deployment, and Delivery reports the result.'
+        },
+        {
+            id: 'platform', title: 'agent-platform', outside: true,
+            sub: ['Contracts · acceptance', 'shared CI workflows'], short: 'agent-platform',
+            box: { wide: [16, 560, 184, 84], narrow: [8, 700, 344, 68] },
+            detail: 'The shared repository for architecture, service contracts, acceptance scenarios, and CI workflows. It defines how the platform fits together and how to verify it; it is not a running service.'
         }
     ];
 
@@ -105,17 +117,17 @@
             from: 'studio', to: 'memory', label: 'User grant over MCP for memories and handoffs',
             path: { narrow: 'M100 208 C100 240 47 236 47 268' }
         },
-        { from: 'studio', to: 'knowledge', label: 'User grant over HTTP and MCP for documents, graph, and audio' },
-        { from: 'studio', to: 'forge', label: 'User grant for workspaces, runs, and Git' },
+        { from: 'studio', to: 'knowledge', label: 'User grant over MCP for documents, graph, and audio' },
+        { from: 'studio', to: 'forge', label: 'User grant over MCP for workspaces, runs, and Git; approvals stay in Forge' },
         {
-            from: 'studio', to: 'delivery', label: 'User grant over MCP for projects and resources, without values or deletes',
+            from: 'studio', to: 'delivery', label: 'User grant over MCP for resources and app delivery; secret entry and approvals stay in Delivery',
             path: {
                 wide: 'M400 324 V564 Q400 574 410 574 H552',
                 narrow: 'M300 208 C300 240 313 236 313 268'
             }
         },
         {
-            from: 'studio', to: 'models', label: 'Per-call grant bound to one request and one approved model',
+            from: 'studio', to: 'models', label: 'Current model HTTP API with a per-call grant for one approved model',
             path: {
                 wide: 'M430 324 V332 Q430 342 440 342 H870 Q880 342 880 332 V294',
                 narrow: 'M93 208 V400'
@@ -130,11 +142,19 @@
             path: { narrow: 'M244 344 C244 372 300 372 300 344' }
         },
         { from: 'delivery', to: 'resources', label: 'Creates databases and prefixes, and stores values in SSM' },
-        { from: 'resources', to: 'apps', label: 'External Secrets delivers prod values; Pod Identity limits the prefix' },
+        {
+            from: 'delivery', to: 'workflows', label: 'Build, test, and deploy; observe the result before reporting success',
+            path: { narrow: 'M300 344 C300 368 268 364 268 380 V480 Q268 490 269 498' }
+        },
+        { from: 'workflows', to: 'apps', label: 'GitOps deploys the release to the selected environment' },
+        {
+            from: 'resources', to: 'apps', label: 'External Secrets delivers only the target environment’s values',
+            path: { narrow: 'M313 456 V472 Q313 482 328 482 H346 Q356 482 356 492 V616 Q356 626 352 626' }
+        },
         { from: 'models', to: 'providers', label: 'Only Models holds provider keys' }
     ];
 
-    var VIEW = { wide: [1040, 746], narrow: [360, 624] };
+    var VIEW = { wide: [1040, 746], narrow: [360, 784] };
 
     var byId = {};
     NODES.forEach(function (node) { byId[node.id] = node; });
