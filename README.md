@@ -15,7 +15,7 @@ OpsPresso builds services for operating AI agents and tools for the people build
 
 ### Agent Platform
 
-Six independent services own their settings, data, permissions, and consoles. Studio orchestrates work through MCP with Memory, Knowledge, Forge, and Delivery; Models provides the central model gateway.
+Six independent services own their settings, data, permissions, and consoles. Studio orchestrates work through MCP with Memory, Knowledge, Forge, and Runway; Models provides the central model gateway.
 
 | Service | Purpose |
 | --- | --- |
@@ -24,13 +24,13 @@ Six independent services own their settings, data, permissions, and consoles. St
 | [Agent Memory](https://memory.agrt.dev) | Store durable context, recall it in Studio and coding clients, share it by scope, and hand off work between sessions. |
 | [Agent Knowledge](https://knowledge.agrt.dev) | Collect documents and audio; provide transcription, meeting notes, source-linked search, knowledge graphs, and ontology objects. |
 | [Agent Forge](https://forge.agrt.dev) | Own persistent workspaces, coding CLI sessions, execution profiles, GitHub connections, and approvals for protected Git actions. |
-| [Agent Delivery](https://delivery.agrt.dev) | Apply application.yaml, provision resources and secrets, build and test with Argo Workflows, and deploy, promote, or roll back releases through GitOps. |
+| [Agent Runway](https://runway.agrt.dev) | Apply application.yaml, provision resources and secrets, build and test with Argo Workflows, and deploy, promote, or roll back releases through GitOps. |
 
 `agent-platform` holds shared architecture, service contracts, acceptance scenarios, and CI workflows. It contains no service runtime. [agent-plugins](https://github.com/opspresso/agent-plugins) supplies reusable skills and MCP declarations; installing content does not grant access to services.
 
 The homepage describes the current implementation. Studio's Models connection still uses HTTP APIs; do not describe the platform's MCP-only design principle as a completed migration. Verify this boundary against `agent-platform/docs/ARCHITECTURE.md` and Studio's model router when updating the map.
 
-The app workflow is **plan → develop and review → provision → deploy and operate**. Forge owns protected Git approvals; Delivery owns app deployment approvals, environment promotion, and rollback.
+The app workflow is **plan → develop and review → provision → deploy and operate**. Forge owns protected Git approvals; Runway owns app deployment approvals, environment promotion, and rollback.
 
 ### Developer Tools
 

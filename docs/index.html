@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpsPresso — Platforms and tools for AI agents</title>
-    <meta name="description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Delivery. Plus VibeMon, romty, and Toast.">
+    <meta name="description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Runway. Plus VibeMon, romty, and Toast.">
 
     <link rel="canonical" href="https://opspresso.com/">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opspresso.com/">
     <meta property="og:title" content="OpsPresso — Platforms and tools for AI agents">
-    <meta property="og:description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Delivery. Plus VibeMon, romty, and Toast.">
+    <meta property="og:description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Runway. Plus VibeMon, romty, and Toast.">
     <meta property="og:site_name" content="OpsPresso">
     <meta property="og:image" content="https://opspresso.com/images/og.png">
     <meta property="og:image:type" content="image/png">
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="OpsPresso — Platforms and tools for AI agents">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OpsPresso — Platforms and tools for AI agents">
-    <meta name="twitter:description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Delivery. Plus VibeMon, romty, and Toast.">
+    <meta name="twitter:description" content="Take ideas from agent conversations to running apps with six independent services: Studio, Models, Memory, Knowledge, Forge, and Runway. Plus VibeMon, romty, and Toast.">
     <meta name="twitter:image" content="https://opspresso.com/images/og.png">
     <meta name="twitter:image:alt" content="OpsPresso — Platforms and tools for AI agents">
 
@@ -123,7 +123,7 @@
                 <figure class="arch" aria-labelledby="arch-title">
                     <figcaption class="arch-head">
                         <h3 class="display" id="arch-title">How the services fit together</h3>
-                        <p>Studio provides identity and orchestration. MCP connects agents to Memory, Knowledge, Forge, and Delivery. Models routes model calls. Forge develops the code; Delivery builds and deploys the app.</p>
+                        <p>Studio provides identity and orchestration. MCP connects agents to Memory, Knowledge, Forge, and Runway. Models routes model calls. Forge develops the code; Runway builds and deploys the app.</p>
                     </figcaption>
                     <div class="arch-map" data-arch-map></div>
                     <div class="arch-panel" data-arch-panel aria-live="polite">
@@ -262,12 +262,12 @@
                         </ul>
                     </div>
                 </article>
-                <article class="product p-delivery" id="agent-delivery">
-                    <img class="product-mark" src="images/agent-delivery.png" alt="Agent Delivery" width="72" height="72" loading="lazy">
+                <article class="product p-runway" id="agent-runway">
+                    <img class="product-mark" src="images/agent-runway.png" alt="Agent Runway" width="72" height="72" loading="lazy">
                     <div>
-                        <h3 class="display product-name">Agent Delivery</h3>
-                        <a class="product-url" href="https://delivery.agrt.dev" target="_blank" rel="noopener">
-                            delivery.agrt.dev
+                        <h3 class="display product-name">Agent Runway</h3>
+                        <a class="product-url" href="https://runway.agrt.dev" target="_blank" rel="noopener">
+                            runway.agrt.dev
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M7 17 17 7M9 7h8v8"/>
                             </svg>
@@ -276,7 +276,7 @@
                     </div>
                     <div class="product-body">
                         <p class="product-pitch">Take the apps agents build into production.</p>
-                        <p class="product-detail">Apply <code>application.yaml</code> to provision app resources and deliver secrets to workspaces and deployed apps. Build and test with Argo Workflows, deploy through GitOps, and promote the same release across environments. Review approvals, deployment logs, and rollback targets in Delivery. Enter secret values in its console, outside chat.</p>
+                        <p class="product-detail">Apply <code>application.yaml</code> to provision app resources and deliver secrets to workspaces and deployed apps. Build and test with Argo Workflows, deploy through GitOps, and promote the same release across environments. Review approvals, deployment logs, and rollback targets in Runway. Enter secret values in its console, outside chat.</p>
                         <ul class="tags">
                             <li>App resources</li>
                             <li>Secret delivery</li>
@@ -292,7 +292,7 @@
             <div class="shell">
                 <div class="section-head">
                     <h2 class="display">From request to running app</h2>
-                    <p class="lead">Plan in Studio, develop in Forge, and ship with Delivery. Keep decisions in Memory and source documents in Knowledge. Review protected actions in the service that owns them.</p>
+                    <p class="lead">Plan in Studio, develop in Forge, and ship with Runway. Keep decisions in Memory and source documents in Knowledge. Review protected actions in the service that owns them.</p>
                 </div>
 
                 <ol class="flow">
@@ -314,23 +314,23 @@
                         <p>Forge writes code and application.yaml, runs checks in a sandbox, and opens a pull request. Review the diff and approve protected Git actions in Forge.</p>
                         <p class="mono flow-svc">Agent Forge</p>
                     </li>
-                    <li class="flow-step p-delivery">
+                    <li class="flow-step p-runway">
                         <div class="flow-head">
                             <span class="mono flow-num">03</span>
-                            <span class="flow-marks"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="flow-marks"><img src="images/agent-runway.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
                         <h3 class="display">Provision</h3>
-                        <p>Apply application.yaml in Delivery to create resources for each environment. Enter secrets in its console. Forge receives development values; deployed apps receive values through External Secrets.</p>
-                        <p class="mono flow-svc">Agent Delivery</p>
+                        <p>Apply application.yaml in Runway to create resources for each environment. Enter secrets in its console. Forge receives development values; deployed apps receive values through External Secrets.</p>
+                        <p class="mono flow-svc">Agent Runway</p>
                     </li>
-                    <li class="flow-step p-delivery is-ship">
+                    <li class="flow-step p-runway is-ship">
                         <div class="flow-head">
                             <span class="mono flow-num">04</span>
-                            <span class="flow-marks"><img src="images/agent-delivery.png" alt="" width="34" height="34" loading="lazy"></span>
+                            <span class="flow-marks"><img src="images/agent-runway.png" alt="" width="34" height="34" loading="lazy"></span>
                         </div>
                         <h3 class="display">Deploy &amp; operate</h3>
-                        <p>Delivery builds and tests a release, then deploys it through GitOps. Promote the same release with the required approval, inspect logs, or roll back to the previous release.</p>
-                        <p class="mono flow-svc">Agent Delivery · Argo Workflows · GitOps</p>
+                        <p>Runway builds and tests a release, then deploys it through GitOps. Promote the same release with the required approval, inspect logs, or roll back to the previous release.</p>
+                        <p class="mono flow-svc">Agent Runway · Argo Workflows · GitOps</p>
                     </li>
                 </ol>
             </div>
@@ -467,7 +467,7 @@
                         <li><a href="https://memory.agrt.dev" target="_blank" rel="noopener">Agent Memory</a></li>
                         <li><a href="https://knowledge.agrt.dev" target="_blank" rel="noopener">Agent Knowledge</a></li>
                         <li><a href="https://forge.agrt.dev" target="_blank" rel="noopener">Agent Forge</a></li>
-                        <li><a href="https://delivery.agrt.dev" target="_blank" rel="noopener">Agent Delivery</a></li>
+                        <li><a href="https://runway.agrt.dev" target="_blank" rel="noopener">Agent Runway</a></li>
                         <li><a href="https://github.com/opspresso/agent-plugins" target="_blank" rel="noopener">Skills &amp; plugins</a></li>
                     </ul>
                 </nav>
