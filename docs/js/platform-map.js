@@ -32,7 +32,7 @@
             sub: ['Identity · agents', 'MCP orchestration'], short: 'Agent Studio',
             box: { wide: [256, 200, 208, 124], narrow: [84, 124, 232, 84] },
             href: '#agent-studio',
-            detail: 'Owns agent configuration, conversations, run traces, and execution policy. Provides OIDC identity for the platform and connects to Memory, Knowledge, Forge, and Delivery through MCP. Each service owns its console, data, settings, and approvals.'
+            detail: 'Owns agent configuration, conversations, run traces, and execution policy. Provides OIDC identity for the platform and connects to Memory, Knowledge, Forge, and Runway through MCP. Each service owns its console, data, settings, and approvals.'
         },
         {
             id: 'memory', title: 'Agent Memory', product: true,
@@ -53,20 +53,20 @@
             sub: ['Workspaces', 'and sandboxes'], short: 'Forge',
             box: { wide: [552, 372, 208, 84], narrow: [186, 268, 78, 76] },
             href: '#agent-forge',
-            detail: 'Owns persistent workspaces, execution profiles, GitHub connections, and protected Git approvals. Runs commands and coding CLIs in isolated sandboxes, routes model calls through Models, and receives development values from Delivery.'
+            detail: 'Owns persistent workspaces, execution profiles, GitHub connections, and protected Git approvals. Runs commands and coding CLIs in isolated sandboxes, routes model calls through Models, and receives development values from Runway.'
         },
         {
-            id: 'delivery', title: 'Agent Delivery', product: true,
-            sub: ['Resources · secrets', 'build · deploy · promote'], short: 'Delivery',
+            id: 'runway', title: 'Agent Runway', product: true,
+            sub: ['Resources · secrets', 'build · deploy · promote'], short: 'Runway',
             box: { wide: [552, 532, 208, 84], narrow: [274, 268, 78, 76] },
-            href: '#agent-delivery',
+            href: '#agent-runway',
             detail: 'Applies application.yaml, provisions app resources, and delivers secrets. Owns releases, deployment approvals, logs, environment promotion, and rollback. Argo Workflows builds and tests; GitOps deploys the release. Secret values stay outside MCP responses.'
         },
         {
             id: 'sandbox', title: 'Sandboxes', outside: true,
             sub: ['Docker · Kubernetes'], short: 'Sandboxes',
             box: { wide: [840, 388, 184, 52], narrow: [186, 400, 78, 56] },
-            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly. Dev values from Agent Delivery are masked in run output.'
+            detail: 'Docker or Kubernetes sandboxes. Each run gets a gateway token limited to that run, so a sandbox never calls Models directly. Dev values from Agent Runway are masked in run output.'
         },
         {
             id: 'models', title: 'Agent Models', product: true,
@@ -92,13 +92,13 @@
             id: 'apps', title: 'Deployed apps', outside: true,
             sub: ['Release · environment', 'GitOps · External Secrets'], short: 'Deployed apps',
             box: { wide: [840, 666, 184, 64], narrow: [186, 592, 166, 68] },
-            detail: 'GitOps declares the release for each project environment. Delivery tracks deployment results, promotes the same image digest, and can roll back to a previous release. External Secrets supplies environment values.'
+            detail: 'GitOps declares the release for each project environment. Runway tracks deployment results, promotes the same image digest, and can roll back to a previous release. External Secrets supplies environment values.'
         },
         {
             id: 'workflows', title: 'Build & deploy', outside: true,
             sub: ['Argo Workflows · GitOps'], short: 'Build & deploy',
             box: { wide: [552, 666, 208, 64], narrow: [186, 498, 166, 56] },
-            detail: 'Delivery submits and observes build, test, and deployment workflows. A release records its source revision and image digest. GitOps applies the deployment, and Delivery reports the result.'
+            detail: 'Runway submits and observes build, test, and deployment workflows. A release records its source revision and image digest. GitOps applies the deployment, and Runway reports the result.'
         },
         {
             id: 'platform', title: 'agent-platform', outside: true,
@@ -120,7 +120,7 @@
         { from: 'studio', to: 'knowledge', label: 'User grant over MCP for documents, graph, and audio' },
         { from: 'studio', to: 'forge', label: 'User grant over MCP for workspaces, runs, and Git; approvals stay in Forge' },
         {
-            from: 'studio', to: 'delivery', label: 'User grant over MCP for resources and app delivery; secret entry and approvals stay in Delivery',
+            from: 'studio', to: 'runway', label: 'User grant over MCP for resources and app delivery; secret entry and approvals stay in Runway',
             path: {
                 wide: 'M400 324 V564 Q400 574 410 574 H552',
                 narrow: 'M300 208 C300 240 313 236 313 268'
@@ -138,12 +138,12 @@
         { from: 'forge', to: 'models', label: 'Per-call grant or service credential, including sandbox calls' },
         { from: 'forge', to: 'sandbox', label: 'Runs commands and coding CLIs with a run-scoped token' },
         {
-            from: 'forge', to: 'delivery', label: 'Short-lived token exchange, then dev values for one run',
+            from: 'forge', to: 'runway', label: 'Short-lived token exchange, then dev values for one run',
             path: { narrow: 'M244 344 C244 372 300 372 300 344' }
         },
-        { from: 'delivery', to: 'resources', label: 'Creates databases and prefixes, and stores values in SSM' },
+        { from: 'runway', to: 'resources', label: 'Creates databases and prefixes, and stores values in SSM' },
         {
-            from: 'delivery', to: 'workflows', label: 'Build, test, and deploy; observe the result before reporting success',
+            from: 'runway', to: 'workflows', label: 'Build, test, and deploy; observe the result before reporting success',
             path: { narrow: 'M300 344 C300 368 268 364 268 380 V480 Q268 490 269 498' }
         },
         { from: 'workflows', to: 'apps', label: 'GitOps deploys the release to the selected environment' },
