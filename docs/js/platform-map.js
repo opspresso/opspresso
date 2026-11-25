@@ -84,9 +84,9 @@
         },
         {
             id: 'resources', title: 'App resources', outside: true,
-            sub: ['PostgreSQL pool · S3 prefix', 'SSM Parameter Store'], short: 'Resources',
+            sub: ['PostgreSQL pool · S3 prefix', 'Secrets Manager'], short: 'Resources',
             box: { wide: [840, 526, 184, 96], narrow: [274, 400, 78, 56] },
-            detail: 'A database and login role on the shared PostgreSQL pool, a private prefix in a shared S3 bucket, and secret values in SSM Parameter Store. Each belongs to one project environment.'
+            detail: 'A database and login role on the shared PostgreSQL pool, a private prefix in a shared S3 bucket, and secret values in AWS Secrets Manager. Each belongs to one project environment.'
         },
         {
             id: 'apps', title: 'Deployed apps', outside: true,
